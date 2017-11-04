@@ -1,12 +1,13 @@
 #include <cstdlib>
 #include <iostream>
 
+
 #define NULL __null
 #ifndef arbol
 #define arbol
 
 using namespace std;
-
+//Estructura para agregar los datos de los usuarios alojados en el archivo plano de texto 
 struct user{
     int id;
     int age;
@@ -23,11 +24,14 @@ class arbinor{
         arbinor(){
             raiz = NULL;
         }
+        //Retorna la raiz de arbol
         user *reRaiz(){return raiz;};
+        //inserta una estructura de usuario, la estructua de usuario se crea en ReaderFile.h
         int insertar (user *u);
+        //Metodo encargado de buscar en que posicion se debe agregar un elemento al arbol
         user *buscar_arbol(user *u, user *p,user *q);
-        user *buscar(int id,user *p,user *q);
-        user *buscarU(int ip);
+        //Recibe un numero de documento con el fin de buscarlo en la estructura del arbol y devolver toda la estructura
+        user *buscar(int id);
         void inorden(user *p);
  };
 
@@ -62,27 +66,13 @@ user *arbinor::buscar_arbol(user *u,user *p,user *q){
         return q;
     }else return NULL;
 }
-user *arbinor::buscar(int id,user *p,user *q){
-    /*if (p==NULL) return NULL;
-	if (id < p->id){
-              q=p;
-              p=p->izq;
-	          q=buscar(id,p,q);
-              return q;
-    }
-	else if (id >p->id){
-		q=p;
-		p=p->der;
-		q =buscar(id,p,q);
-		return q;}
-           else return q;*/
+user *arbinor::buscar(int id){
     user *actual = reRaiz();
     while(actual!=NULL) {
-        if(id == actual->id) return actual; /* dato encontrado  (2) */
-            else if(id < actual->id) actual = actual->izq;  /* (3) */
-            else if(id > actual->id) actual = actual->der; /* (4) */
+        if(id == actual->id) return actual;
+            else if(id < actual->id) actual = actual->izq;
+            else if(id > actual->id) actual = actual->der;
     }
-    cout<< "no existe";
     return NULL;
 }
 void arbinor::inorden(user *p){
