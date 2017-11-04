@@ -13,4 +13,5 @@ struct user{
     user *izq;
     user *der;
 };
+
 #endif

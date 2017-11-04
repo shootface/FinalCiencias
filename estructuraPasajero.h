@@ -3,6 +3,7 @@
 #define pasajeros
 
 using namespace std;
+
 struct passanger{
     string name;
     string lastname;
@@ -10,4 +11,5 @@ struct passanger{
     int date;
     int type;
 };
+
 #endif

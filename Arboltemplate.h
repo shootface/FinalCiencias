@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <iostream>
 
-
 #define NULL __null
 #ifndef arbol
 #define arbol
@@ -11,7 +10,8 @@ using namespace std;
 //para controlar la inclusion de datos a un arbol binario organizado con un clave comun
 
 //IMPORTANTE : la clave comun que deben tener todas las estructuras que pretendan utilizar 
-//esta libreria debe ser llamada " id " y debe ser de tipo entero para que asi no genere errores 
+//esta libreria debe ser llamada " id " y debe ser de tipo entero para que asi no genere errores
+
 template <class T>
 class arbinor{
     T *raiz;
@@ -21,14 +21,15 @@ class arbinor{
         }
         //Retorna la raiz de arbol
         T *reRaiz(){return raiz;};
-        //inserta una estructura de usuario, la estructua de usuario se crea en ReaderFile.h
+        //Inserta una estructura de tipo T, la estructua se crea en ReaderFile.h
         int insertar (T *u);
         //Metodo encargado de buscar en que posicion se debe agregar un elemento al arbol
-        T *buscar_arbol(T *u, T *p,T *q);
-        //Recibe un numero de documento con el fin de buscarlo en la estructura del arbol y devolver toda la estructura
+        T *buscar_arbol(T *u, T *p, T *q);
+        //Recibe un " id " con el fin de buscarlo en la estructura del arbol y devolver toda la estructura
         T *buscar(int id);
         void inorden(T *p);
- };
+};
+
 template <class T>
 int arbinor<T>::insertar(T *u){
     T *q;
@@ -47,6 +48,7 @@ int arbinor<T>::insertar(T *u){
     }else   q->der=u;
     return 0;
 }
+
 template <class T>
 T *arbinor<T>::buscar_arbol(T *u,T *p,T *q){
     if (p==NULL){
@@ -62,6 +64,7 @@ T *arbinor<T>::buscar_arbol(T *u,T *p,T *q){
         return q;
     }else return NULL;
 }
+
 template <class T>
 T *arbinor<T>::buscar(int id){
     T *actual = reRaiz();
@@ -72,11 +75,13 @@ T *arbinor<T>::buscar(int id){
     }
     return NULL;
 }
+
 template <class T>
 void arbinor<T>::inorden(T *p){
     if (p!=NULL){
         inorden(p->izq);
-        cout<<p->id<<endl;
+        cout<<p->id<< " " <<p->name<<endl;
         inorden(p->der);}
 }
+
 #endif
