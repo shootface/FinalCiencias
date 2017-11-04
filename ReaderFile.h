@@ -1,46 +1,61 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "ArbolUser.h"
+#include "Arboltemplate.h"
+#include "estructuraUsuarios.h"
 
 #ifndef reader
 #define reader
 
 using namespace std;
-
+template <class T>
 class readerFile{    
 public:
-    arbinor arbolUser;
+    arbinor<T> arbolUser;
+    vector<string> lecturaFinal;
     readerFile(){}
     void readFile(string name); 
-    arbinor getArbol(){return arbolUser;};
+    arbinor<T> getArbol(){return arbolUser;};
+    vector<string> getLectura(){return lecturaFinal;};
+    void organizarUsuarios(vector<string> lec);
 private:
-    void organizarUsuarios(string lec2[]);
-    void split(string user1);
+    void splitUser(string user1);
     void crearUsuario(vector<string> users);
 };
-void readerFile::readFile(string name){
+//Encargado de leer el archivo y guardar cada linea leida en un vector
+template <class T>
+void readerFile<T>::readFile(string name){
+    //Defino un string donde voy a guardar cada linea leida 
     string lectura;
+    //Defino un elemento de tipo fsstream que se encarga de crear el buffer para la
+    //lectura del archivo 
     fstream fs;
-    string lec[100];
+    //Abrir el archivo mediante el nombre que paso por parametro
     fs.open(name);
-    int i=0;
+    //mientras exista una linea que leer va a hacer lo que esta dentro de la estructura iterativa
     while (! fs.eof() ) {
+        //obtiene una linea de lectura que va ser guardada en la variable "lectura"
         getline (fs,lectura);
-        lec[i]=lectura;
-        i++;
+        //agrega esa linea leida al vector principal 
+        lecturaFinal.push_back(lectura);
     }
+    //cierra el archivo
     fs.close();
-    organizarUsuarios(lec);
 }
-void readerFile::organizarUsuarios(string lec2[]){
-    string temp;
+//LOS SIGUIENTES METODOS SON UNICOS PARA RECORRER LOS USUARIOS 
+
+
+//Recorre el vector y envia cada linea leida que esta
+//almacenado en el vector y lo envia al metodo split con
+//el fin de organizar lo que esta dentro de esa linea
+template <class T>
+void readerFile<T>::organizarUsuarios(vector<string> lec){
     for(int i=0;i<100;i++){
-        temp = lec2[i];
-        split(temp);
+        splitUser(lec[i]);
     }
 }
-void readerFile::split(string user1){
+template <class T>
+void readerFile<T>::splitUser(string user1){
     string temp;
     vector<string> usertemp;
     vector<string> usertemp2;
@@ -52,14 +67,12 @@ void readerFile::split(string user1){
         usertemp.push_back(temp);
         user1 = user1.substr(found+1,user1.size());
     }
-    /*for(int i=0;i<5;i++){
-        cout << usertemp[i] << endl;
-    }*/
     found = NULL;
     crearUsuario(usertemp);
     usertemp.erase(usertemp.begin(),usertemp.end());
 }
-void readerFile::crearUsuario(vector<string> users){
+template <class T>
+void readerFile<T>::crearUsuario(vector<string> users){
     user *u = new user;
     u -> name = users[0];
     u -> lastname = users[1];

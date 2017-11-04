@@ -10,5 +10,7 @@ struct user{
     string name;
     string lastname;
     char sex;
+    user *izq;
+    user *der;
 };
 #endif

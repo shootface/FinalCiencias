@@ -1,16 +1,18 @@
 #include <iostream>
 #include "ReaderFile.h"
-#include "ArbolUser.h"
+#include "Arboltemplate.h"
+#include "estructuraUsuarios.h"
 
 using namespace std;
 
 
 int main(){
-    readerFile rd;
+    readerFile<user> rd;
     string name = "usuarios.txt";
     rd.readFile(name); 
-    arbinor arbolUser = rd.getArbol();
+    rd.organizarUsuarios(rd.getLectura());
+    arbinor<user> arbolUser = rd.getArbol();
     //arbolUser.inorden(arbolUser.reRaiz());
-    user *usfound = arbolUser.buscar(30102948,arbolUser.reRaiz(),arbolUser.reRaiz());
+    user *usfound = arbolUser.buscar(30102948);
     cout << "Name : " << usfound -> name  << "ID :"<< usfound -> id << endl;
 }

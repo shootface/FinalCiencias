@@ -7,36 +7,31 @@
 #define arbol
 
 using namespace std;
-//Estructura para agregar los datos de los usuarios alojados en el archivo plano de texto 
-struct user{
-    int id;
-    int age;
-    string name;
-    string lastname;
-    char sex;
-    user *izq;
-    user *der;
-};
+//Creo un template con el fin de ser capaces de definir una sola libreria
+//para controlar la inclusion de datos a un arbol binario organizado con un clave comun
 
+//IMPORTANTE : la clave comun que deben tener todas las estructuras que pretendan utilizar 
+//esta libreria debe ser llamada " id " y debe ser de tipo entero para que asi no genere errores 
+template <class T>
 class arbinor{
-    user *raiz;
+    T *raiz;
     public:
         arbinor(){
             raiz = NULL;
         }
         //Retorna la raiz de arbol
-        user *reRaiz(){return raiz;};
+        T *reRaiz(){return raiz;};
         //inserta una estructura de usuario, la estructua de usuario se crea en ReaderFile.h
-        int insertar (user *u);
+        int insertar (T *u);
         //Metodo encargado de buscar en que posicion se debe agregar un elemento al arbol
-        user *buscar_arbol(user *u, user *p,user *q);
+        T *buscar_arbol(T *u, T *p,T *q);
         //Recibe un numero de documento con el fin de buscarlo en la estructura del arbol y devolver toda la estructura
-        user *buscar(int id);
-        void inorden(user *p);
+        T *buscar(int id);
+        void inorden(T *p);
  };
-
-int arbinor::insertar(user *u){
-    user *q;
+template <class T>
+int arbinor<T>::insertar(T *u){
+    T *q;
     if (raiz == NULL){
     raiz = u;
     raiz->izq=raiz->der=NULL;
@@ -52,7 +47,8 @@ int arbinor::insertar(user *u){
     }else   q->der=u;
     return 0;
 }
-user *arbinor::buscar_arbol(user *u,user *p,user *q){
+template <class T>
+T *arbinor<T>::buscar_arbol(T *u,T *p,T *q){
     if (p==NULL){
         return q;
     } 
@@ -66,8 +62,9 @@ user *arbinor::buscar_arbol(user *u,user *p,user *q){
         return q;
     }else return NULL;
 }
-user *arbinor::buscar(int id){
-    user *actual = reRaiz();
+template <class T>
+T *arbinor<T>::buscar(int id){
+    T *actual = reRaiz();
     while(actual!=NULL) {
         if(id == actual->id) return actual;
             else if(id < actual->id) actual = actual->izq;
@@ -75,7 +72,8 @@ user *arbinor::buscar(int id){
     }
     return NULL;
 }
-void arbinor::inorden(user *p){
+template <class T>
+void arbinor<T>::inorden(T *p){
     if (p!=NULL){
         inorden(p->izq);
         cout<<p->id<<endl;
