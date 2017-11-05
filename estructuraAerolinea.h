@@ -1,4 +1,6 @@
 #include<iostream>
+#include "Arboltemplate.h"
+#include "estructuraVueloPlaneado.h"
 #ifndef estructuraAirline
 #define estructuraAirline
 
@@ -10,6 +12,7 @@ struct airline{
     string bankacc;
     airline *izq;
     airline *der;
+    arbinor<vuelopla> *trayectos;
 };
 	
 #endif
