@@ -13,6 +13,7 @@ struct airline{
     airline *izq;
     airline *der;
     arbinor<vuelopla> *trayectos;
+    //Falta hacer una estructura con los itinerarios anuales
 };
 	
 #endif

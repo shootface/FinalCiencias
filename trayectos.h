@@ -8,13 +8,12 @@
 
 class controlTrayectos{
 public:
-    string filename;
     arbinor<vuelopla> *tra;
-    controlTrayectos(string name,arbinor<vuelopla> *trayectos){
-        filename = name;
+    controlTrayectos(arbinor<vuelopla> *trayectos){
         tra = trayectos;
     }
     //Ingresa un vuelo planeado al plan de trayectos semanales
+    arbinor<vuelopla> *getTrayectos(){return tra;};
     int agregarVueloP(vuelopla vp);
     cola<vuelopla> consultar(int day);
 private:
