@@ -1,2 +1,2 @@
-0/234/Bogota/New_York/5/1620/0140/30/344
+234/Bogota/New_York/5/1620/0140/30/344
 344/New_York/londres/5/0140/0800/40/0

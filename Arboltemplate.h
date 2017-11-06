@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "colaTemplate.h"
+#include "estructuraRelleno.h"
 
 #ifndef arbol
 #define arbol
@@ -15,7 +16,7 @@ using namespace std;
 template <class T>
 class arbinor{
     T *raiz;
-    cola<string> *retorna;
+    cola<tRelleno> *retorna;
     public:
         arbinor(){
             raiz = NULL;
@@ -29,9 +30,11 @@ class arbinor{
         //Recibe un " id " con el fin de buscarlo en la estructura del arbol y devolver toda la estructura
         T *buscar(int id);
         void inorden(T *p);
-        cola<string> *inordenCola();
+        cola<tRelleno> *inordenCola();
+        cola<T> *inordenTra();
     private:
-    	cola<string> *inordenCola(T *p);
+        cola<tRelleno> *inordenCola(T *p);
+        cola<T> *inordenTra(T *p);
 };
 
 template <class T>
@@ -84,21 +87,24 @@ template <class T>
 void arbinor<T>::inorden(T *p){
     if (p!=NULL){
         inorden(p->izq);
-        cout<<p->id<< " " <<p->name<<endl;
+        cout<<p->id<<endl;
         inorden(p->der);}
 }
 
 template <class T>
-cola<string> *arbinor<T>::inordenCola(){
-	retorna = new cola<string>;
+cola<tRelleno> *arbinor<T>::inordenCola(){
+	retorna = new cola<tRelleno>;
 	return inordenCola(raiz);	
 }
 
 template <class T>
-cola<string> *arbinor<T>::inordenCola(T *p){
+cola<tRelleno> *arbinor<T>::inordenCola(T *p){
+    tRelleno r;
 	if(p!=NULL){
-		inordenCola(p->izq);
-		retorna->InsCola(p->name);
+        inordenCola(p->izq);
+        r.id = p -> id;
+        r.name = p -> name;
+		retorna->InsCola(r);
 		inordenCola(p->der);
 		return retorna;
 	}

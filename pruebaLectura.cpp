@@ -37,7 +37,11 @@ int main(){
 
     gestionDatos ges;
     ges.cargarUsuarios();
-	ges.cargarAerolinea();
+    ges.cargarAerolinea();
+    arbinor<airline> *aero = ges.getArbinorAirline();
+    arbinor<vuelopla> t= aero->buscar(5662)->trayectos;
+    cout << "entro : "<< endl;
+    t.inorden(t.reRaiz());
     return 0;
 }
 

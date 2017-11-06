@@ -6,6 +6,7 @@
 #include "estructuraUsuarios.h"
 #include "estructuraAerolinea.h"
 #include "estructuraVueloPlaneado.h"
+#include "colaTemplate.h"
 
 #ifndef reader
 #define reader
@@ -16,10 +17,11 @@ template <class T>
 class readerFile{    
 	public:
     	arbinor<T> tree;
-    	vector<string> lecturaFinal;
+        vector<string> lecturaFinal;
+        vector<string> pttemp;
     	readerFile(){}
     	int readFile(string name); 
-	    arbinor<T> getArbol(){return tree;};
+	    arbinor<T> getArbol();
 	    vector<string> getLectura(){return lecturaFinal;};
 	    void organizarUsuarios(vector<string> lec);
 	    void organizarAerolineas(vector<string> lec);
@@ -30,9 +32,12 @@ class readerFile{
 	    void splitPlanTrayectos(string pt);
 	    void crearUsuario(vector<string> users);
 	    void crearAerolinea(vector<string> airlines);
-	    void crearPlanTrayectos(vector<string> pt);
+        void crearPlanTrayectos(vector<string> pt);
 };
-
+template <class T>
+arbinor<T> readerFile<T>::getArbol(){
+    return tree;
+}
 //Encargado de leer el archivo y guardar cada linea leida en un vector
 template <class T>
 int readerFile<T>::readFile(string name){
@@ -151,8 +156,6 @@ void readerFile<T>::organizarPlanTrayectos(vector<string> lec){
 template <class T>
 void readerFile<T>::splitPlanTrayectos(string pt){
     string temp;
-    vector<string> pttemp;
-    vector<string> pttemp2;
     int found;
     cout << "Llegada : "<< pt << endl;
     while(found!=-1){
@@ -167,18 +170,19 @@ void readerFile<T>::splitPlanTrayectos(string pt){
 }
 template <class T>
 void readerFile<T>::crearPlanTrayectos(vector<string> pt){
+    /*for (int i=0;i<pt.size();i++){
+        cout <<"i :" << i <<"  " <<pt[i] << endl ;
+    }*/
     vuelopla *t = new vuelopla;
-    t -> id = atoi(pt[1].c_str());
-    t -> origin = pt[2];
-    t -> posting = pt[3];
-    t -> dayWeek = atoi(pt[4].c_str());
-    t -> hi = atoi(pt[5].c_str());
-    t -> hf = atoi(pt[6].c_str());
-    t -> numS = atoi(pt[7].c_str());
-    t -> der = tree.buscar(atoi(pt[8].c_str()));
-    t -> izq = tree.buscar(atoi(pt[0].c_str()));
+    t -> id = atoi(pt[0].c_str());
+    t -> origin = pt[1];
+    t -> posting = pt[2];
+    t -> dayWeek = atoi(pt[3].c_str());
+    t -> hi = atoi(pt[4].c_str());
+    t -> hf = atoi(pt[5].c_str());
+    t -> numS = atoi(pt[6].c_str());
+    t -> nextT = atoi(pt[7].c_str());
     tree.insertar(t);
 }
-
 #endif
 

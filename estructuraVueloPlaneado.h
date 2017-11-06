@@ -29,9 +29,11 @@ struct vuelopla{
     int hf;
     //Numero de sillas
     int numS;
+    //Apuntadores del arbol
+    vuelopla *der;
+    vuelopla *izq;
     //posible escala
-    vuelopla *der; //next
-    vuelopla *izq; //ant
+    int nextT;
 };
 
 #endif

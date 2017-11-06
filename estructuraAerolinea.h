@@ -12,7 +12,7 @@ struct airline{
     string bankacc;
     airline *izq;
     airline *der;
-    arbinor<vuelopla> *trayectos;
+    arbinor<vuelopla> trayectos;
     //Falta hacer una estructura con los itinerarios anuales
 };
 	

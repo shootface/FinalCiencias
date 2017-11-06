@@ -3,20 +3,26 @@
 #include "estructuraUsuarios.h"
 #include "estructuraAerolinea.h"
 #include "colaTemplate.h"
+#include "estructuraRelleno.h"
 
 #ifndef gestion
 #define gestion
 
 class gestionDatos{
-    arbinor<user> usuarios;
-    arbinor<airline> aerolineas;
+    arbinor<user> *usuarios;
+	arbinor<airline> *aerolineas;
+	arbinor<user> us;
+    arbinor<airline> aer;
     arbinor<vuelopla> vp;
 	public:
+		gestionDatos(){}
 		int cargarAerolinea();
 	    int cargarUsuarios();
-		gestionDatos(){}
+		arbinor<user> *getArbinorUser(){return usuarios;};
+		arbinor<airline> *getArbinorAirline(){return aerolineas;};
 	private:
-    	int cargarTrayectorias(arbinor<airline> arbolAir);
+		void cargarTrayectorias(arbinor<airline> *arbolAir);
+		arbinor<vuelopla> setEscala(arbinor<vuelopla> vp);
 };
 /*
 	Llama la libreria encargada de la gestion de los datos de
@@ -24,48 +30,50 @@ class gestionDatos{
 */
 int gestionDatos::cargarUsuarios(){
     readerFile<user> rdu;
-    string name = "usuarios.txt";
+	string name = "usuarios.txt";
+	cout << "tengo la lectura" << endl;
     if(rdu.readFile(name)){
-        rdu.organizarUsuarios(rdu.getLectura());
-        arbinor<user> arbolUser = rdu.getArbol();
+		cout << "se puede leer" << endl;
+		rdu.organizarUsuarios(rdu.getLectura());
+		us = rdu.getArbol();
+        usuarios = &us;
         //arbolUser.inorden(arbolUser.reRaiz());
         return 1;
     }else{
         return 0;
     }
 }
-
 int gestionDatos::cargarAerolinea(){
 	readerFile<airline> rda;
 	string name = "aerolineas.txt";
 	if(rda.readFile(name)){
 		rda.organizarAerolineas(rda.getLectura());
-		arbinor<airline> arbolAir = rda.getArbol();
-		arbolAir.inorden(arbolAir.reRaiz());
-		cargarTrayectorias(arbolAir);
+		aer = rda.getArbol();
+		aerolineas = &aer;
+		cargarTrayectorias(aerolineas);
 		return 1;
 	} else {
 		return 0;
 	}
 }
 
-int gestionDatos::cargarTrayectorias(arbinor<airline> arbolAir){
-	cola<string> *cs = arbolAir.inordenCola();
+void gestionDatos::cargarTrayectorias(arbinor<airline> *arbolAir){
+	cout << "HOLA" << endl;
+	cola<tRelleno> *cs = arbolAir->inordenCola();
 	while(!cs->ColaVacia()){
-		string name = ""+cs->AtenderCola()+"_T.txt";
-		cout<<name<<endl; // para verificacion 
+		tRelleno temp = cs->AtenderCola();
+		string name = ""+temp.name+"_T.txt";
+		//cout<<name<<endl; // para verificacion 
 		readerFile<vuelopla> rdvp;
 		if(rdvp.readFile(name)){
+			//BASE
 			rdvp.organizarPlanTrayectos(rdvp.getLectura());
-			arbinor<vuelopla> arbolTray = rdvp.getArbol();
-			/*
-				Aca se debe insertar en la estructura aerolinea
-			*/
-			cout<<"Paso"<<endl;
-		} else {
-			cout<<"Next"<<endl;
+			vp = rdvp.getArbol();
+			airline *tempair = arbolAir->buscar(temp.id);
+			tempair -> trayectos = vp;
+			//FIN BASE
+			cout << tempair -> name << endl;
 		}
 	}
 }
-
 #endif
