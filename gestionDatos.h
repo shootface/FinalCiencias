@@ -22,6 +22,7 @@ class gestionDatos{
 		arbinor<airline> *getArbinorAirline(){return aerolineas;};
 	private:
 		void cargarTrayectorias(arbinor<airline> *arbolAir);
+		void cargarItinerarios(arbinor<airline> *arbolAir);
 		arbinor<vuelopla> setEscala(arbinor<vuelopla> vp);
 };
 /*
@@ -56,9 +57,7 @@ int gestionDatos::cargarAerolinea(){
 		return 0;
 	}
 }
-
 void gestionDatos::cargarTrayectorias(arbinor<airline> *arbolAir){
-	cout << "HOLA" << endl;
 	cola<tRelleno> *cs = arbolAir->inordenCola();
 	while(!cs->ColaVacia()){
 		tRelleno temp = cs->AtenderCola();
