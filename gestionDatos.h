@@ -14,17 +14,18 @@ class gestionDatos{
 	public:
 		int cargarAerolinea();
 	    int cargarUsuarios();
-		gestionDatos(){
-		}
+		gestionDatos(){}
 	private:
     	int cargarTrayectorias(arbinor<airline> arbolAir);
 };
-//Llama la libreria encargada de la gestion de los datos de
-//los archivos planos de los usuarios con el fin de almacenarlos
+/*
+	Llama la libreria encargada de la gestion de los datos de
+	los archivos planos de los usuarios con el fin de almacenarlos
+*/
 int gestionDatos::cargarUsuarios(){
     readerFile<user> rdu;
     string name = "usuarios.txt";
-    if(rdu.readFile(name) == 1){
+    if(rdu.readFile(name)){
         rdu.organizarUsuarios(rdu.getLectura());
         arbinor<user> arbolUser = rdu.getArbol();
         //arbolUser.inorden(arbolUser.reRaiz());
@@ -37,7 +38,7 @@ int gestionDatos::cargarUsuarios(){
 int gestionDatos::cargarAerolinea(){
 	readerFile<airline> rda;
 	string name = "aerolineas.txt";
-	if(rda.readFile(name) == 1){
+	if(rda.readFile(name)){
 		rda.organizarAerolineas(rda.getLectura());
 		arbinor<airline> arbolAir = rda.getArbol();
 		arbolAir.inorden(arbolAir.reRaiz());
@@ -48,21 +49,18 @@ int gestionDatos::cargarAerolinea(){
 	}
 }
 
-/*
-	El primero es leido bien. El segundo vuelve a leer el primero y sigue
-	leyendo lineas, luego falla la ejecucion. Posible problema en ReaderFile.h
-*/
 int gestionDatos::cargarTrayectorias(arbinor<airline> arbolAir){
-	readerFile<vuelopla> rdvp;
 	cola<string> *cs = arbolAir.inordenCola();
 	while(!cs->ColaVacia()){
 		string name = ""+cs->AtenderCola()+"_T.txt";
-		cout<<name<<endl;
-		if(rdvp.readFile(name) == 1){
+		cout<<name<<endl; // para verificacion 
+		readerFile<vuelopla> rdvp;
+		if(rdvp.readFile(name)){
 			rdvp.organizarPlanTrayectos(rdvp.getLectura());
 			arbinor<vuelopla> arbolTray = rdvp.getArbol();
-			// Aca se debe insertar en la estructura aerolinea
-			// Pendiente para hacerse tras solucionar el rpoblema con la lectura de 2+ archivos
+			/*
+				Aca se debe insertar en la estructura aerolinea
+			*/
 			cout<<"Paso"<<endl;
 		} else {
 			cout<<"Next"<<endl;

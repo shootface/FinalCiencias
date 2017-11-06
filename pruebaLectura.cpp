@@ -34,7 +34,7 @@ int main(){
     cout<<endl;
     cout << "Name : " << airfound->name  << " ID : "<< airfound->id << endl;
     */
-    
+
     gestionDatos ges;
     ges.cargarUsuarios();
 	ges.cargarAerolinea();

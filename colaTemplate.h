@@ -45,7 +45,6 @@ T cola<T>::AtenderCola(){
     return x;
 }
 
-//necesario cambiar este metodo
 template <class T>
 void cola<T>::ImprimirCola(){
     nodo<T> *aux;
