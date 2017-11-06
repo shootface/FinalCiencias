@@ -1,7 +1,8 @@
 #include <cstdlib>
 #include <iostream>
+#include <vector>
+#include "colaTemplate.h"
 
-#define NULL __null
 #ifndef arbol
 #define arbol
 
@@ -11,23 +12,26 @@ using namespace std;
 
 //IMPORTANTE : la clave comun que deben tener todas las estructuras que pretendan utilizar 
 //esta libreria debe ser llamada " id " y debe ser de tipo entero para que asi no genere errores
-
 template <class T>
 class arbinor{
     T *raiz;
+    cola<string> *retorna;
     public:
         arbinor(){
             raiz = NULL;
         }
         //Retorna la raiz de arbol
         T *reRaiz(){return raiz;};
-        //Inserta una estructura de tipo T, la estructua se crea en ReaderFile.h
+        //Inserta una estructura de tipo T, la estructura se crea en ReaderFile.h
         int insertar (T *u);
         //Metodo encargado de buscar en que posicion se debe agregar un elemento al arbol
         T *buscar_arbol(T *u, T *p, T *q);
         //Recibe un " id " con el fin de buscarlo en la estructura del arbol y devolver toda la estructura
         T *buscar(int id);
         void inorden(T *p);
+        cola<string> *inordenCola();
+    private:
+    	cola<string> *inordenCola(T *p);
 };
 
 template <class T>
@@ -84,4 +88,19 @@ void arbinor<T>::inorden(T *p){
         inorden(p->der);}
 }
 
+template <class T>
+cola<string> *arbinor<T>::inordenCola(){
+	retorna = new cola<string>;
+	return inordenCola(raiz);	
+}
+
+template <class T>
+cola<string> *arbinor<T>::inordenCola(T *p){
+	if(p!=NULL){
+		inordenCola(p->izq);
+		retorna->InsCola(p->name);
+		inordenCola(p->der);
+		return retorna;
+	}
+}
 #endif

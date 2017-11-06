@@ -3,10 +3,12 @@
 #include "Arboltemplate.h"
 #include "estructuraUsuarios.h"
 #include "estructuraAerolinea.h"
+#include "gestionDatos.h"
 
 using namespace std;
 
 int main(){
+	/*
     readerFile<user> rd;
     string name = "usuarios.txt";
     rd.readFile(name); 
@@ -20,7 +22,7 @@ int main(){
     
     cout<<"/////////////////\\\\\\\\\\\\\\\\\///////////////"<<endl;
 	cout<<endl;
-
+	
     readerFile<airline> rda;
 	name = "aerolineas.txt";
     rda.readFile(name); 
@@ -31,6 +33,11 @@ int main(){
     airline *airfound = arbolAero.buscar(5662);
     cout<<endl;
     cout << "Name : " << airfound->name  << " ID : "<< airfound->id << endl;
+    */
     
+    gestionDatos ges;
+    ges.cargarUsuarios();
+	ges.cargarAerolinea();
     return 0;
 }
+

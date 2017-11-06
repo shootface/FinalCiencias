@@ -3,6 +3,7 @@
 #define vuelop
 
 using namespace std;
+
 struct vuelopla{
     //Codigo de vuelo
     int id;
@@ -12,7 +13,7 @@ struct vuelopla{
     string posting;
     //dia de la semana
     /*
-        //Los datos validos seran:
+        Los datos validos seran:
             0 : lunes
             1 : martes
             2 : miercoles
@@ -29,8 +30,9 @@ struct vuelopla{
     //Numero de sillas
     int numS;
     //posible escala
-    vuelopla *next;
-    vuelopla *ant;
+    vuelopla *der; //next
+    vuelopla *izq; //ant
 };
 
 #endif
+

@@ -14,23 +14,23 @@ using namespace std;
 
 template <class T>
 class readerFile{    
-public:
-    arbinor<T> tree;
-    vector<string> lecturaFinal;
-    readerFile(){}
-    int readFile(string name); 
-    arbinor<T> getArbol(){return tree;};
-    vector<string> getLectura(){return lecturaFinal;};
-    void organizarUsuarios(vector<string> lec);
-    void organizarAerolineas(vector<string> lec);
-    void organizarPlanTrayectos(vector<string> lec);
-private:
-    void splitUser(string user1);
-    void splitAero(string aero);
-    void splitPlanTrayectos(string pt);
-    void crearUsuario(vector<string> users);
-    void crearAerolinea(vector<string> airlines);
-    void crearPlanTrayectos(vector<string> pt);
+	public:
+    	arbinor<T> tree;
+    	vector<string> lecturaFinal;
+    	readerFile(){}
+    	int readFile(string name); 
+	    arbinor<T> getArbol(){return tree;};
+	    vector<string> getLectura(){return lecturaFinal;};
+	    void organizarUsuarios(vector<string> lec);
+	    void organizarAerolineas(vector<string> lec);
+	    void organizarPlanTrayectos(vector<string> lec);
+	private:
+	    void splitUser(string user1);
+	    void splitAero(string aero);
+	    void splitPlanTrayectos(string pt);
+	    void crearUsuario(vector<string> users);
+	    void crearAerolinea(vector<string> airlines);
+	    void crearPlanTrayectos(vector<string> pt);
 };
 
 //Encargado de leer el archivo y guardar cada linea leida en un vector
@@ -38,12 +38,12 @@ template <class T>
 int readerFile<T>::readFile(string name){
     //Defino un string donde voy a guardar cada linea leida 
     string lectura;
-    //Defino un elemento de tipo fsstream que se encarga de crear el buffer para la
+    //Defino un elemento de tipo fstream que se encarga de crear el buffer para la
     //lectura del archivo 
     fstream fs;
     
     //mientras exista una linea que leer va a hacer lo que esta dentro de la estructura iterativa
-    if(ifstream(name)){
+    if(ifstream(name.c_str())){
         //Abrir el archivo mediante el nombre que paso por parametro
         fs.open(name.c_str());
         while (! fs.eof() ) {
@@ -68,7 +68,7 @@ int readerFile<T>::readFile(string name){
 //el fin de organizar lo que esta dentro de esa linea
 template <class T>
 void readerFile<T>::organizarUsuarios(vector<string> lec){
-    for(int i=0;i<100;i++){
+    for(int i=0;i<lec.size()-1;i++){
         splitUser(lec[i]);
     }
 }
@@ -107,7 +107,7 @@ void readerFile<T>::crearUsuario(vector<string> users){
 //el fin de organizar lo que esta dentro de esa linea
 template <class T>
 void readerFile<T>::organizarAerolineas(vector<string> lec){
-    for(int i=0;i<50;i++){
+    for(int i=0;i<lec.size()-1;i++){
         splitAero(lec[i]);
     }
 }
@@ -144,7 +144,7 @@ void readerFile<T>::crearAerolinea(vector<string> airlines){
 //el fin de organizar lo que esta dentro de esa linea
 template <class T>
 void readerFile<T>::organizarPlanTrayectos(vector<string> lec){
-    for(int i=0;i<lec.size();i++){
+    for(int i=0;i<lec.size()-1;i++){
         splitPlanTrayectos(lec[i]);
     }
 }
@@ -175,9 +175,10 @@ void readerFile<T>::crearPlanTrayectos(vector<string> pt){
     t -> hi = atoi(pt[5].c_str());
     t -> hf = atoi(pt[6].c_str());
     t -> numS = atoi(pt[7].c_str());
-    t -> next = tree.buscar(atoi(pt[8].c_str()));
-    t -> ant = tree.buscar(atoi(pt[0].c_str()));
-    tree.insert(t);
+    t -> der = tree.buscar(atoi(pt[8].c_str()));
+    t -> izq = tree.buscar(atoi(pt[0].c_str()));
+    tree.insertar(t);
 }
 
 #endif
+
