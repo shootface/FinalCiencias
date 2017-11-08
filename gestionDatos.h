@@ -14,6 +14,7 @@ class gestionDatos{
 	arbinor<user> us;
     arbinor<airline> aer;
     arbinor<vuelopla> vp;
+    lista<vueloes> ve;
 	public:
 		gestionDatos(){}
 		int cargarAerolinea();
@@ -52,6 +53,7 @@ int gestionDatos::cargarAerolinea(){
 		aer = rda.getArbol();
 		aerolineas = &aer;
 		cargarTrayectorias(aerolineas);
+    cargarItinerarios(aerolineas);
 		return 1;
 	} else {
 		return 0;
@@ -62,7 +64,7 @@ void gestionDatos::cargarTrayectorias(arbinor<airline> *arbolAir){
 	while(!cs->ColaVacia()){
 		tRelleno temp = cs->AtenderCola();
 		string name = ""+temp.name+"_T.txt";
-		//cout<<name<<endl; // para verificacion 
+		//cout<<name<<endl; // para verificacion
 		readerFile<vuelopla> rdvp;
 		if(rdvp.readFile(name)){
 			//BASE
@@ -75,4 +77,21 @@ void gestionDatos::cargarTrayectorias(arbinor<airline> *arbolAir){
 		}
 	}
 }
+
+void gestionDatos::cargarItinerarios(arbinor<airline> *arbolAir) {
+  cola<tRelleno> *cs = arbolAir->inordenCola();
+  while (!cs->ColaVacia()) {
+    tRelleno temp = cs->AtenderCola();
+    string name = "" + temp.name + "_I.txt";
+    readerFile<vueloes> rdves;
+    if (rdves.readFile(name)) {
+      rdves.organizarItinerarios(rdves.getLectura());
+      ve = rdves.getLista();
+      airline *tempair = arbolAir->buscar(temp.id);
+      tempair->itinerario = ve;
+      cout << tempair->name << endl;
+    }
+  }
+}
+
 #endif

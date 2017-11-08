@@ -6,6 +6,7 @@
 #include "estructuraUsuarios.h"
 #include "estructuraAerolinea.h"
 #include "estructuraVueloPlaneado.h"
+#include "estructuraVueloEspecifico.h"
 #include "colaTemplate.h"
 
 #ifndef reader
@@ -14,39 +15,50 @@
 using namespace std;
 
 template <class T>
-class readerFile{    
+class readerFile{
 	public:
     	arbinor<T> tree;
+			lista<T> iti;
         vector<string> lecturaFinal;
         vector<string> pttemp;
+				vector<string> ititemp;
     	readerFile(){}
-    	int readFile(string name); 
+    	int readFile(string name);
 	    arbinor<T> getArbol();
+			lista<T> getLista();
 	    vector<string> getLectura(){return lecturaFinal;};
 	    void organizarUsuarios(vector<string> lec);
 	    void organizarAerolineas(vector<string> lec);
 	    void organizarPlanTrayectos(vector<string> lec);
+			void organizarItinerarios(vector<string> lec);
 	private:
 	    void splitUser(string user1);
 	    void splitAero(string aero);
 	    void splitPlanTrayectos(string pt);
+			void splitItinerarios(string itinerario);
 	    void crearUsuario(vector<string> users);
 	    void crearAerolinea(vector<string> airlines);
         void crearPlanTrayectos(vector<string> pt);
+				void crearItinerario(vector<string> pt);
 };
 template <class T>
 arbinor<T> readerFile<T>::getArbol(){
     return tree;
 }
+
+template <typename T>
+lista<T> readerFile<T>::getLista(){
+	return iti;
+}
 //Encargado de leer el archivo y guardar cada linea leida en un vector
 template <class T>
 int readerFile<T>::readFile(string name){
-    //Defino un string donde voy a guardar cada linea leida 
+    //Defino un string donde voy a guardar cada linea leida
     string lectura;
     //Defino un elemento de tipo fstream que se encarga de crear el buffer para la
-    //lectura del archivo 
+    //lectura del archivo
     fstream fs;
-    
+
     //mientras exista una linea que leer va a hacer lo que esta dentro de la estructura iterativa
     if(ifstream(name.c_str())){
         //Abrir el archivo mediante el nombre que paso por parametro
@@ -54,7 +66,7 @@ int readerFile<T>::readFile(string name){
         while (! fs.eof() ) {
             //obtiene una linea de lectura que va ser guardada en la variable "lectura"
             getline (fs, lectura);
-            //agrega esa linea leida al vector principal 
+            //agrega esa linea leida al vector principal
             lecturaFinal.push_back(lectura);
         }
         //cierra el archivo
@@ -63,9 +75,9 @@ int readerFile<T>::readFile(string name){
     }else{
         return 0;
     }
-   
+
 }
-//LOS SIGUIENTES METODOS SON UNICOS PARA RECORRER LOS USUARIOS 
+//LOS SIGUIENTES METODOS SON UNICOS PARA RECORRER LOS USUARIOS
 
 
 //Recorre el vector y envia cada linea leida que esta
@@ -85,13 +97,13 @@ void readerFile<T>::splitUser(string user1){
     cout << "Llegada : "<< user1 << endl;
     while(found!=-1){
         found = user1.find("/");
-        temp = user1.substr(0, found); 
+        temp = user1.substr(0, found);
         usertemp.push_back(temp);
         user1 = user1.substr(found+1, user1.size());
     }
     found = NULL;
     crearUsuario(usertemp);
-    usertemp.erase(usertemp.begin(), usertemp.end());	
+    usertemp.erase(usertemp.begin(), usertemp.end());
 }
 template <class T>
 void readerFile<T>::crearUsuario(vector<string> users){
@@ -124,7 +136,7 @@ void readerFile<T>::splitAero(string aero){
     cout << "Llegada : "<< aero << endl;
     while(found!=-1){
         found = aero.find("/");
-        temp = aero.substr(0, found); 
+        temp = aero.substr(0, found);
         aerotemp.push_back(temp);
         aero = aero.substr(found+1, aero.size());
     }
@@ -160,7 +172,7 @@ void readerFile<T>::splitPlanTrayectos(string pt){
     cout << "Llegada : "<< pt << endl;
     while(found!=-1){
         found = pt.find("/");
-        temp = pt.substr(0, found); 
+        temp = pt.substr(0, found);
         pttemp.push_back(temp);
         pt = pt.substr(found+1, pt.size());
     }
@@ -184,5 +196,40 @@ void readerFile<T>::crearPlanTrayectos(vector<string> pt){
     t -> nextT = atoi(pt[7].c_str());
     tree.insertar(t);
 }
-#endif
 
+// LOS SIGUIENTES METODOS SON UNICOS PARA RECORRER ITINERARIOS
+
+// Recorre el vector y envia cada linea leida que esta
+// almacenado en el vector y lo envia al metodo split con
+// el fin de organizar lo que esta dentro de esa linea
+template <class T>
+void readerFile<T>::organizarItinerarios(vector<string> lec) {
+  for (int i = 0; i < lec.size() - 1; i++) {
+    splitItinerarios(lec[i]);
+  }
+}
+
+template <class T> void readerFile<T>::splitItinerarios(string itinerario) {
+  string temp;
+  int found;
+  cout << "Llegada : " << itinerario << endl;
+  while (found != -1) {
+    found = itinerario.find("/");
+    temp = itinerario.substr(0, found);
+    ititemp.push_back(temp);
+    itinerario = itinerario.substr(found + 1, itinerario.size());
+  }
+  found = NULL;
+  crearItinerario(ititemp);
+  ititemp.erase(ititemp.begin(), ititemp.end());
+}
+
+template <class T> void readerFile<T>::crearItinerario(vector<string> pt) {
+  vueloes t;
+  t.numSillasDisponibles = atoi(pt[0].c_str());
+  t.fecha = pt[1];
+  t.precio = atof(pt[2].c_str());
+  iti.insertar_final(t);
+}
+
+#endif

@@ -11,7 +11,7 @@ int main(){
 	/*
     readerFile<user> rd;
     string name = "usuarios.txt";
-    rd.readFile(name); 
+    rd.readFile(name);
     rd.organizarUsuarios(rd.getLectura());
     arbinor<user> arbolUser = rd.getArbol();
     cout<<endl;
@@ -19,13 +19,13 @@ int main(){
     user *usfound = arbolUser.buscar(30102948);
     cout<<endl;
     cout << "Name : " << usfound -> name  << " ID : "<< usfound -> id <<endl;
-    
+
     cout<<"/////////////////\\\\\\\\\\\\\\\\\///////////////"<<endl;
 	cout<<endl;
-	
+
     readerFile<airline> rda;
 	name = "aerolineas.txt";
-    rda.readFile(name); 
+    rda.readFile(name);
     rda.organizarAerolineas(rda.getLectura());
     arbinor<airline> arbolAero = rda.getArbol();
     cout<<endl;
@@ -40,8 +40,9 @@ int main(){
     ges.cargarAerolinea();
     arbinor<airline> *aero = ges.getArbinorAirline();
     arbinor<vuelopla> t= aero->buscar(5662)->trayectos;
+    lista<vueloes> ve = aero->buscar(5662)->itinerario;
     cout << "entro : "<< endl;
     t.inorden(t.reRaiz());
+    ve.imprimir();
     return 0;
 }
-
