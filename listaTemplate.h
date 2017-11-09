@@ -173,6 +173,7 @@ void lista<T>::imprimir() {
 
     int pos = 1;
     while (aux != NULL) {
+      cout << "  " << endl;
       cout << "Info " << pos << ": " << aux->info.numSillasDisponibles << endl;
       cout << "Info " << pos << ": " << aux->info.fecha << endl;
       cout << "Info " << pos << ": " << aux->info.precio << endl;

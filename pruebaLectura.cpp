@@ -43,6 +43,9 @@ int main(){
     lista<vueloes> ve = aero->buscar(5662)->itinerario;
     cout << "entro : "<< endl;
     t.inorden(t.reRaiz());
-    ve.imprimir();
+    //ve.imprimir();
+    string temp = "999/New_York/Madrid/2/1600/600/50/0";
+    cout << "Estado de la operación : " << ges.agregarTrayectorias(temp,5662) << endl;
+    t.inorden(t.reRaiz());
     return 0;
 }
