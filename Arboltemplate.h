@@ -86,8 +86,8 @@ T *arbinor<T>::buscar(int id){
 template <class T>
 void arbinor<T>::inorden(T *p){
     if (p!=NULL){
-        inorden(p->izq);
         cout<<p->id<<endl;
+        inorden(p->izq);
         inorden(p->der);}
 }
 

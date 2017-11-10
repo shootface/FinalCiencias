@@ -4,6 +4,7 @@
 #include "estructuraAerolinea.h"
 #include "colaTemplate.h"
 #include "estructuraRelleno.h"
+#include "WriterFile.h"
 
 
 #ifndef gestion
@@ -74,6 +75,10 @@ int gestionDatos::cargarAerolinea(){
 	}
 }
 int gestionDatos::agregarTrayectorias(string t,int idAero){
+	airline *a = aer.buscar(idAero);
+	string name = ""+a->name+"_T.txt";
+	writerFile wr;
+	wr.write(name,t);
 	readerFile<vuelopla> rd;
 	if(agregarTrayectoria(rd.crearPlanTrayectos(rd.split(t)),idAero)){
 		return 1;

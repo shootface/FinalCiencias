@@ -40,15 +40,20 @@ int main(){
     writerFile wf;
     ges.cargarUsuarios();
     ges.cargarAerolinea();
-    /*arbinor<airline> *aero = ges.getArbinorAirline();
+    arbinor<airline> *aero = ges.getArbinorAirline();
     arbinor<vuelopla> t= aero->buscar(5662)->trayectos;
+    cout << "DATOS DE CARGA " << endl;
+    t.inorden(t.reRaiz());
+    ges.agregarTrayectorias("8/New_York/Madrid/2/1600/600/50/0",5662);
+    t.inorden(t.reRaiz());
+    /*
     lista<vueloes> ve = aero->buscar(5662)->itinerario;
     cout << "entro : "<< endl;
-    t.inorden(t.reRaiz());
+    
     //ve.imprimir();
     string temp = "999/New_York/Madrid/2/1600/600/50/0";
     cout << "Estado de la operación : " << ges.agregarTrayectorias(temp,5662) << endl;
     t.inorden(t.reRaiz());*/
-    wf.write("Avianca_T.txt","876/New_York/Madrid/2/1600/600/50/0");
+    //wf.write("Avianca_T.txt","876/New_York/Madrid/2/1600/600/50/0");
     return 0;
 }
