@@ -76,24 +76,30 @@ int gestionDatos::cargarAerolinea(){
 }
 int gestionDatos::agregarTrayectorias(string t,int idAero){
 	readerFile<vuelopla> rd;
-	bool escribir=true;
 	airline *a = aer.buscar(idAero);
 	arbinor<vuelopla> vpF = a->trayectos;
 	string name = ""+a->name+"_T.txt";
-	//cola<int> vpa = vpF.inordenT(vpF.reRaiz());
+	bool es=true;
 	vuelopla *vptemp = rd.crearPlanTrayectos(rd.split(t));
-	/*while(!vpa.ColaVacia()){
-		vuelopla *vp = vpa.AtenderCola();
-		if(vp->dayWeek==vptemp->dayWeek){
-			if(vp->origin==vptemp->origin && vp->posting==vptemp->posting){
-				escribir = false;
+	cola<int> *id = vpF.inOrdenV();
+	while(!id->ColaVacia()){
+		int temp = id->AtenderCola();
+		cout << "DATO EN COLA : " << temp << endl;
+		vuelopla *vtemp = vpF.buscar(temp);
+		if(vtemp->dayWeek==vptemp->dayWeek){
+			if(vtemp->origin==vptemp->origin && vptemp->posting==vtemp->posting){
+				cout << "repetido" << endl;
+				es = false;
+			}else{
+				cout << "no esta repetido en la"<< endl;
 			}
 		}
-	}*/
-
-	if(agregarTrayectoria(vptemp,idAero)&&escribir){
+	}
+	if(es){
+		agregarTrayectoria(vptemp,idAero);
 		writerFile wr;
 		wr.write(name,t);
+		cout << "no esta repetido";
 		return 1;
 	}else{
 		return 0;

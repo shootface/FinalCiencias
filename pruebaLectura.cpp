@@ -42,9 +42,9 @@ int main(){
     ges.cargarAerolinea();
     arbinor<airline> *aero = ges.getArbinorAirline();
     arbinor<vuelopla> t= aero->buscar(5662)->trayectos;
-    cout << "DATOS DE CARGA " << endl;
-    t.inorden(t.reRaiz());
-    ges.agregarTrayectorias("9/New_York/Madrid/2/1600/600/50/0",5662);
+    //t.inorden(t.reRaiz());
+    cout << "Action :" << ges.agregarTrayectorias("11/Bogota/Madrid/2/1600/600/50/0",5662)<< endl;
+    cout << "agregar" << endl;
     t.inorden(t.reRaiz());
     /*
     lista<vueloes> ve = aero->buscar(5662)->itinerario;

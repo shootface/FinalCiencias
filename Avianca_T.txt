@@ -2,5 +2,4 @@
 4/letonia/Madrid/2/1600/600/50/0
 5/letonia/Madrid/2/1600/600/50/0
 236/Londres/Abu Dabi/3/0800/2200/60/0
-12/New_York/Madrid/2/1600/600/50/0
-9/New_York/Madrid/2/1600/600/50/0
+10/Bogota/Madrid/2/1600/600/50/0

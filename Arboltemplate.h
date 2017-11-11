@@ -18,6 +18,7 @@ template <class T>
 class arbinor{
     T *raiz;
     cola<tRelleno> *retorna;
+    cola<int> *ids;
     public:
         arbinor(){
             raiz = NULL;
@@ -32,7 +33,8 @@ class arbinor{
         T *buscar(int id);
         void inorden(T *p);
         cola<tRelleno> *inordenCola();
-        cola<int> inordenT(T *p);
+        cola<int> *inOrdenV();
+        cola<int> *inOrdenV(T *p);
     private:
         cola<tRelleno> *inordenCola(T *p);
         
@@ -111,14 +113,19 @@ cola<tRelleno> *arbinor<T>::inordenCola(T *p){
 		return retorna;
 	}
 }
-template <class T> 
-cola<int> arbinor<T>::inordenT(T *p){
-    cola<int> colaR;
-    if(p!=NULL){
-        inordenT(p->izq);
-        colaR.InsCola(p->id);
-		inordenT(p->der);
-		return colaR;
-	}
+template <class T>
+cola<int> *arbinor<T>::inOrdenV(){
+    ids = new cola<int>;
+    return inOrdenV(raiz);
+}
+template <class T>
+cola<int> *arbinor<T>::inOrdenV(T *p){
+    if (p!=NULL){
+        inOrdenV(p->izq);
+        cout << "ENTONCES :" << p->id << endl;
+        ids->InsCola(p->id);
+        inOrdenV(p->der);
+        return ids;
+    }
 }
 #endif
