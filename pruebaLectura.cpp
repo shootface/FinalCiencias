@@ -44,7 +44,7 @@ int main(){
     arbinor<vuelopla> t= aero->buscar(5662)->trayectos;
     cout << "DATOS DE CARGA " << endl;
     t.inorden(t.reRaiz());
-    ges.agregarTrayectorias("8/New_York/Madrid/2/1600/600/50/0",5662);
+    ges.agregarTrayectorias("9/New_York/Madrid/2/1600/600/50/0",5662);
     t.inorden(t.reRaiz());
     /*
     lista<vueloes> ve = aero->buscar(5662)->itinerario;

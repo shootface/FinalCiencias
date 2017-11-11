@@ -75,12 +75,25 @@ int gestionDatos::cargarAerolinea(){
 	}
 }
 int gestionDatos::agregarTrayectorias(string t,int idAero){
-	airline *a = aer.buscar(idAero);
-	string name = ""+a->name+"_T.txt";
-	writerFile wr;
-	wr.write(name,t);
 	readerFile<vuelopla> rd;
-	if(agregarTrayectoria(rd.crearPlanTrayectos(rd.split(t)),idAero)){
+	bool escribir=true;
+	airline *a = aer.buscar(idAero);
+	arbinor<vuelopla> vpF = a->trayectos;
+	string name = ""+a->name+"_T.txt";
+	//cola<int> vpa = vpF.inordenT(vpF.reRaiz());
+	vuelopla *vptemp = rd.crearPlanTrayectos(rd.split(t));
+	/*while(!vpa.ColaVacia()){
+		vuelopla *vp = vpa.AtenderCola();
+		if(vp->dayWeek==vptemp->dayWeek){
+			if(vp->origin==vptemp->origin && vp->posting==vptemp->posting){
+				escribir = false;
+			}
+		}
+	}*/
+
+	if(agregarTrayectoria(vptemp,idAero)&&escribir){
+		writerFile wr;
+		wr.write(name,t);
 		return 1;
 	}else{
 		return 0;

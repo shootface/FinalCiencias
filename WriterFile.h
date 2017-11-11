@@ -16,10 +16,10 @@ int writerFile::write(string name,string dato){
     rd.readFile(name);
     vector<string> vc = rd.getLectura();
     salida.open(name);
-    for(int i=0;i<vc.size();i++){
+    for(int i=0;i<vc.size()-1;i++){
         salida << vc[i] << endl;
     }
-    salida << dato;
+    salida << dato << endl;
     salida.close();
 }
 #endif

@@ -22,5 +22,6 @@
         "memory": "cpp",
         "new": "cpp",
         "streambuf": "cpp"
-    }
+    },
+    "files.autoSave": "onFocusChange"
 }

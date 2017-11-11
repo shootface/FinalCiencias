@@ -3,6 +3,7 @@
 #include <vector>
 #include "colaTemplate.h"
 #include "estructuraRelleno.h"
+#include "estructuraVueloPlaneado.h"
 
 #ifndef arbol
 #define arbol
@@ -31,10 +32,10 @@ class arbinor{
         T *buscar(int id);
         void inorden(T *p);
         cola<tRelleno> *inordenCola();
-        cola<T> *inordenTra();
+        cola<int> inordenT(T *p);
     private:
         cola<tRelleno> *inordenCola(T *p);
-        cola<T> *inordenTra(T *p);
+        
 };
 
 template <class T>
@@ -86,9 +87,10 @@ T *arbinor<T>::buscar(int id){
 template <class T>
 void arbinor<T>::inorden(T *p){
     if (p!=NULL){
-        cout<<p->id<<endl;
         inorden(p->izq);
-        inorden(p->der);}
+        cout<<p->id<<endl;
+        inorden(p->der);
+        }
 }
 
 template <class T>
@@ -107,6 +109,16 @@ cola<tRelleno> *arbinor<T>::inordenCola(T *p){
 		retorna->InsCola(r);
 		inordenCola(p->der);
 		return retorna;
+	}
+}
+template <class T> 
+cola<int> arbinor<T>::inordenT(T *p){
+    cola<int> colaR;
+    if(p!=NULL){
+        inordenT(p->izq);
+        colaR.InsCola(p->id);
+		inordenT(p->der);
+		return colaR;
 	}
 }
 #endif

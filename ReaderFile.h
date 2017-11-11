@@ -63,13 +63,13 @@ int readerFile<T>::readFile(string name){
     //mientras exista una linea que leer va a hacer lo que esta dentro de la estructura iterativa
     if(ifstream(name.c_str())){
         //Abrir el archivo mediante el nombre que paso por parametro
-        fs.open(name.c_str());
-        while (! fs.eof() ) {
+        fs.open(name.c_str(),ios::in);
+        do{
             //obtiene una linea de lectura que va ser guardada en la variable "lectura"
             getline (fs, lectura);
             //agrega esa linea leida al vector principal
             lecturaFinal.push_back(lectura);
-        }
+        }while (! fs.eof() );
         //cierra el archivo
         fs.close();
         return 1;
@@ -163,6 +163,7 @@ void readerFile<T>::organizarPlanTrayectos(vector<string> lec){
 template <class T>
 vuelopla *readerFile<T>::crearPlanTrayectos(vector<string> pt){
     vuelopla *t = new vuelopla;
+    cout << endl;
     t -> id = atoi(pt[0].c_str());
     t -> origin = pt[1];
     t -> posting = pt[2];
