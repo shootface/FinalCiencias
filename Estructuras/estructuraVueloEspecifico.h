@@ -4,6 +4,7 @@
 #define ESTRUCTURAVUELOESPECIFICO_H
 
 struct vueloEspecifico {
+  int id;
   int idVueloPlaneado;
   int numeroSillasDisponibles;
   string fecha;
