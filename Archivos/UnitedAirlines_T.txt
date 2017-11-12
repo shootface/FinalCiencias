@@ -1,0 +1,14 @@
+29/Angeles/Chicago/4/500/800/40/0
+30/Angeles/Chicago/5/500/800/40/0
+31/Angeles/Chicago/6/500/800/40/0
+32/Detroit/Orlando/0/700/1000/20/33
+33/Honolulu/Portland/0/1100/1400/30/34
+34/Portland/Sacramento/0/1500/1730/30/0
+35/Honolulu/Portland/0/1500/1800/30/0
+36/Detroit/Orlando/1/700/1000/20/0
+37/Honolulu/Portland/6/1800/2100/30/0
+38/Cleveland/Albuquerque/3/1300/1600/20/0
+39/Nashville/Columbus/2/1500/1800/20/40
+40/Columbus/Oakland/2/1900/2300/30/41
+41/Oakland/Omaha/3/100/400/30/0
+42/Oakland/Omaha/4/1500/1800/30/0

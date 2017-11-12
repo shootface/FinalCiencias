@@ -163,7 +163,4 @@ int gestionDatos::agregarTrayectoria(vueloPlaneado *vpnew, int idAero) {
     return 0;
   }
 }
-
-// Agregar itinerarios nuevos al arbol de su respectiva aerolinea
-int gestionDatos::agregarItinerarios(vueloEspecifico vsnew, int idAero) {}
 #endif
