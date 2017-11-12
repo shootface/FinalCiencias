@@ -50,7 +50,7 @@ int main(){
 
     lista<vueloEspecifico> ve = aero->buscar(5662)->itinerario;
     cout << "entro : "<< endl;
-
+    
     ve.imprimirItinerarios();
 
 
