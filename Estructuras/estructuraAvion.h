@@ -6,11 +6,11 @@
 using namespace std;
 
 struct avion {
-  bool disponibilidad;
-  string nombre;
-  string fabricante;
-  int capacidad;
-  string tipo;
+	bool disponibilidad;
+	string nombre;
+	string fabricante;
+	int capacidad;
+	string tipo;
 };
 
 #endif

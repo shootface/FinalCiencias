@@ -2,8 +2,8 @@
 #define ESTRUCTURANODO_H
 
 template <class T> struct nodo {
-  T dato;
-  nodo *sig;
+	T dato;
+	nodo *sig;
 };
 
 #endif
