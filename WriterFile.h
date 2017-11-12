@@ -18,7 +18,7 @@ int writerFile::write(string name, string dato) {
   ofstream salida;
   rd.readFile(name);
   vector<string> vc = rd.getLectura();
-  salida.open(name);
+  salida.open(name.c_str());
   for (int i = 0; i < vc.size() - 1; i++) {
     salida << vc[i] << endl;
   }
