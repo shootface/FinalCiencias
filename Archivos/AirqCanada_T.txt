@@ -4,11 +4,11 @@
 58/Toronto/Ottawa/4/2300/400/30/0
 59/Ottawa/Edmonton/5/600/900/50/0
 60/Edmonton/Quebec/5/830/1000/40/0
-61/Vancouver/Calgary/900/1100/50/0
-62/Halifax/London/800/1100/30/0
-63/Halifax/London/800/1100/30/0
+61/Vancouver/Calgary/3/900/1100/50/0
+62/Halifax/London/2/800/1100/30/0
+63/Halifax/London/6/800/1100/30/0
 64/Edmonton/Quebec/6/830/1000/40/0
 65/Victoria/Hamilton/0/300/700/30/0
 66/Victoria/Hamilton/3/300/700/30/0
 67/Windsor/Oakville/2/900/1200/50/0
-68/Windsor/Oakville/2/900/1500/50/0
+68/Windsor/Oakville/4/900/1500/50/0
