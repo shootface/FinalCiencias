@@ -1,18 +1,19 @@
-#include <cstdlib>
 #include <iostream>
 #include <vector>
-#include "colaTemplate.h"
-#include "estructuraRelleno.h"
-#include "estructuraVueloPlaneado.h"
 
-#ifndef arbol
-#define arbol
+#include "colaTemplate.h"
+
+#include "../Estructuras/estructuraRelleno.h"
+#include "../Estructuras/estructuraVueloPlaneado.h"
+
+#ifndef ARBOLTEMPLATE_H
+#define ARBOLTEMPLATE_H
 
 using namespace std;
 //Creo un template con el fin de ser capaces de definir una sola libreria
 //para controlar la inclusion de datos a un arbol binario organizado con un clave comun
 
-//IMPORTANTE : la clave comun que deben tener todas las estructuras que pretendan utilizar 
+//IMPORTANTE : la clave comun que deben tener todas las estructuras que pretendan utilizar
 //esta libreria debe ser llamada " id " y debe ser de tipo entero para que asi no genere errores
 template <class T>
 class arbinor{
@@ -37,7 +38,7 @@ class arbinor{
         cola<int> *inOrdenV(T *p);
     private:
         cola<tRelleno> *inordenCola(T *p);
-        
+
 };
 
 template <class T>
@@ -63,7 +64,7 @@ template <class T>
 T *arbinor<T>::buscar_arbol(T *u,T *p,T *q){
     if (p==NULL){
         return q;
-    } 
+    }
     if (u->id < p->id){
         q=p;
         q=buscar_arbol(u,p->izq,q);
@@ -98,7 +99,7 @@ void arbinor<T>::inorden(T *p){
 template <class T>
 cola<tRelleno> *arbinor<T>::inordenCola(){
 	retorna = new cola<tRelleno>;
-	return inordenCola(raiz);	
+	return inordenCola(raiz);
 }
 
 template <class T>

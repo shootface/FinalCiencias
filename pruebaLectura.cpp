@@ -1,8 +1,8 @@
 #include <iostream>
 #include "ReaderFile.h"
-#include "Arboltemplate.h"
-#include "estructuraUsuarios.h"
-#include "estructuraAerolinea.h"
+#include "Librerias/arbolTemplate.h"
+#include "Estructuras/estructuraUsuarios.h"
+#include "Estructuras/estructuraAerolinea.h"
 #include "gestionDatos.h"
 #include "WriterFile.h"
 
@@ -41,7 +41,7 @@ int main(){
     ges.cargarUsuarios();
     ges.cargarAerolinea();
     arbinor<airline> *aero = ges.getArbinorAirline();
-    arbinor<vuelopla> t= aero->buscar(5662)->trayectos;
+    arbinor<vueloPlaneado> t= aero->buscar(5662)->trayectos;
     //t.inorden(t.reRaiz());
     cout << "Action :" << ges.agregarTrayectorias("11/Bogota/Madrid/2/1600/600/50/0",5662)<< endl;
     cout << "agregar" << endl;
@@ -49,7 +49,7 @@ int main(){
     /*
     lista<vueloes> ve = aero->buscar(5662)->itinerario;
     cout << "entro : "<< endl;
-    
+
     //ve.imprimir();
     string temp = "999/New_York/Madrid/2/1600/600/50/0";
     cout << "Estado de la operación : " << ges.agregarTrayectorias(temp,5662) << endl;

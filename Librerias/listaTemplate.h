@@ -1,21 +1,17 @@
-#ifndef LISTATEMPLATE_H
-#define LISTATEMPLATE_H
-
 #include <cstdlib>
 #include <iostream>
+
+#include "../Estructuras/estructuraNodo.h"
+
+#ifndef LISTATEMPLATE_H
+#define LISTATEMPLATE_H
 
 using namespace std;
 
 template <class T>
-struct Nodo {
-  Nodo<T> *sig;
-  T info;
-};
-
-template <class T>
 class lista {
 
-  Nodo<T> *cab;
+  nodo<T> *cab;
   int tam;
 
 public:
@@ -42,10 +38,10 @@ void lista<T>::insertar_pos(T infoNueva, int pos) {
     if (pos == 1) {
       insertar_inicio(infoNueva);
     } else {
-      Nodo<T> *nuevo, *aux;
-      nuevo = new Nodo<T>;
+      nodo<T> *nuevo, *aux;
+      nuevo = new nodo<T>;
 
-      nuevo->info = infoNueva;
+      nuevo->dato = infoNueva;
       aux = cab;
 
       int p = 1;
@@ -64,16 +60,16 @@ void lista<T>::insertar_pos(T infoNueva, int pos) {
 template <class T>
 void lista<T>::insertar_final(T infoNueva) {
 
-  Nodo<T> *nuevo;
-  nuevo = new Nodo<T>;
+  nodo<T> *nuevo;
+  nuevo = new nodo<T>;
 
-  nuevo->info = infoNueva;
+  nuevo->dato = infoNueva;
   nuevo->sig = NULL;
 
   if (tam == 0) {
     cab = nuevo;
   } else {
-    Nodo<T> *aux;
+    nodo<T> *aux;
     aux = cab;
 
     while (aux->sig != NULL) {
@@ -87,10 +83,10 @@ void lista<T>::insertar_final(T infoNueva) {
 template <class T>
 void lista<T>::insertar_inicio(T infoNueva) {
 
-  Nodo<T> *nuevo;
-  nuevo = new Nodo<T>;
+  nodo<T> *nuevo;
+  nuevo = new nodo<T>;
 
-  nuevo->info = infoNueva;
+  nuevo->dato = infoNueva;
   nuevo->sig = cab;
   cab = nuevo;
 
@@ -100,7 +96,7 @@ void lista<T>::insertar_inicio(T infoNueva) {
 template <class T>
 T lista<T>::obtenerDato(int pos) {
 
-  Nodo<T> *aux;
+  nodo<T> *aux;
   aux = cab;
 
   int p = 1;
@@ -110,17 +106,17 @@ T lista<T>::obtenerDato(int pos) {
   }
 
   if (aux != NULL) {
-    return aux->info;
+    return aux->dato;
   }
 
-  return aux->info;
+  return aux->dato;
 }
 
 template <class T>
 bool lista<T>::eliminar(int pos) {
 
   if (tam >= pos) {
-    Nodo<T> *temp;
+    nodo<T> *temp;
     temp = cab;
 
     if (pos == 1) {
@@ -131,7 +127,7 @@ bool lista<T>::eliminar(int pos) {
         temp = temp->sig;
       }
 
-      Nodo<T> *aux;
+      nodo<T> *aux;
       aux = temp->sig;
       temp->sig = aux->sig;
 
@@ -168,15 +164,17 @@ void lista<T>::imprimir() {
   } else {
     cout << "La informacion de la lista es:" << endl;
 
-    Nodo<T> *aux;
+    nodo<T> *aux;
     aux = cab;
 
     int pos = 1;
     while (aux != NULL) {
       cout << "  " << endl;
-      cout << "Info " << pos << ": " << aux->info.numSillasDisponibles << endl;
-      cout << "Info " << pos << ": " << aux->info.fecha << endl;
-      cout << "Info " << pos << ": " << aux->info.precio << endl;
+      cout << "Info " << pos << ": " << aux->dato.idVueloPlaneado << endl;
+      cout << "Info " << pos << ": " << aux->dato.numeroSillasDisponibles << endl;
+      cout << "Info " << pos << ": " << aux->dato.fecha << endl;
+      cout << "Info " << pos << ": " << aux->dato.precioAdulto << endl;
+      cout << "Info " << pos << ": " << aux->dato.precioNino << endl;
       aux = aux->sig;
       pos++;
     }
