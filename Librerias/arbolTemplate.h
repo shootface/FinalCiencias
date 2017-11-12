@@ -10,11 +10,13 @@
 #define ARBOLTEMPLATE_H
 
 using namespace std;
-//Creo un template con el fin de ser capaces de definir una sola libreria
-//para controlar la inclusion de datos a un arbol binario organizado con un clave comun
-
-//IMPORTANTE : la clave comun que deben tener todas las estructuras que pretendan utilizar
-//esta libreria debe ser llamada " id " y debe ser de tipo entero para que asi no genere errores
+/*
+	Creo un template con el fin de ser capaces de definir una sola libreria
+	para controlar la inclusion de datos a un arbol binario organizado con un clave comun
+	
+	IMPORTANTE : la clave comun que deben tener todas las estructuras que pretendan utilizar
+	esta libreria debe ser llamada " id " y debe ser de tipo entero para que asi no genere errores
+*/
 template <class T>
 class arbinor{
     T *raiz;
@@ -93,7 +95,7 @@ void arbinor<T>::inorden(T *p){
         inorden(p->izq);
         cout<<p->id<<endl;
         inorden(p->der);
-        }
+    }
 }
 
 template <class T>
@@ -114,11 +116,13 @@ cola<tRelleno> *arbinor<T>::inordenCola(T *p){
 		return retorna;
 	}
 }
+
 template <class T>
 cola<int> *arbinor<T>::inOrdenV(){
     ids = new cola<int>;
     return inOrdenV(raiz);
 }
+
 template <class T>
 cola<int> *arbinor<T>::inOrdenV(T *p){
     if (p!=NULL){
@@ -129,4 +133,5 @@ cola<int> *arbinor<T>::inOrdenV(T *p){
         return ids;
     }
 }
+
 #endif
