@@ -8,6 +8,7 @@
 #include "Librerias/colaTemplate.h"
 
 #include "Estructuras/estructuraAerolinea.h"
+#include "Estructuras/estructuraAvion.h"
 #include "Estructuras/estructuraUsuarios.h"
 #include "Estructuras/estructuraVueloEspecifico.h"
 #include "Estructuras/estructuraVueloPlaneado.h"
@@ -21,31 +22,42 @@ template <class T> class readerFile {
 public:
   arbinor<T> tree;
   lista<T> iti;
+  lista<T> avi;
   vector<string> lecturaFinal;
   readerFile() {}
   int readFile(string name);
   arbinor<T> getArbol();
-  lista<T> getLista();
+  lista<T> getLista(int op);
   vector<string> getLectura() { return lecturaFinal; };
   void usuarios();
   void aerolineas();
   void trayectos();
   void itinerarios();
+  void aviones();
   void organizarUsuarios(vector<string> lec);
   void organizarAerolineas(vector<string> lec);
   void organizarPlanTrayectos(vector<string> lec);
   void organizarItinerarios(vector<string> lec);
+  void organizarAviones(vector<string> lec);
   vector<string> split(string dato);
   user *crearUsuario(vector<string> users);
   airline *crearAerolinea(vector<string> airlines);
   vueloPlaneado *crearPlanTrayectos(vector<string> pt);
   vueloEspecifico crearItinerario(vector<string> pt);
+  avion crearAvion(vector<string> pt);
 
 private:
 };
 template <class T> arbinor<T> readerFile<T>::getArbol() { return tree; }
 
-template <typename T> lista<T> readerFile<T>::getLista() { return iti; }
+template <typename T> lista<T> readerFile<T>::getLista(int op) {
+  if (op == 1) {
+    return iti;
+  } else if (op == 2) {
+    return avi;
+  }
+  return iti;
+}
 
 // Encargado de leer el archivo y guardar cada linea leida en un vector
 template <class T> int readerFile<T>::readFile(string name) {
@@ -195,4 +207,35 @@ vueloEspecifico readerFile<T>::crearItinerario(vector<string> pt) {
   return t;
 }
 
+// LOS SIGUIENTES METODOS SON UNICOS PARA RECORRER AVIONES
+
+// Recorre el vector y envia cada linea leida que esta
+// almacenado en el vector y lo envia al metodo split con
+// el fin de organizar lo que esta dentro de esa linea
+template <class T> void readerFile<T>::aviones() {
+  organizarAviones(getLectura());
+}
+
+template <class T> void readerFile<T>::organizarAviones(vector<string> lec) {
+  for (int i = 0; i < lec.size() - 1; i++) {
+    avi.insertar_final(crearAvion(split(lec[i])));
+  }
+}
+
+template <class T> avion readerFile<T>::crearAvion(vector<string> pt) {
+  avion t;
+  t.disponibilidad = atoi(pt[0].c_str());
+  t.nombre = pt[1];
+  t.fabricante = pt[2];
+  t.capacidad = atoi(pt[3].c_str());
+  int tipo = atoi(pt[4].c_str());
+  if (tipo == 1) {
+    t.tipo = "Intercontinental";
+  } else if (tipo == 2) {
+    t.tipo = "Regional";
+  } else {
+    t.tipo = "No definido";
+  }
+  return t;
+}
 #endif

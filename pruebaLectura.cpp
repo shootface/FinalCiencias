@@ -3,6 +3,7 @@
 #include "Librerias/arbolTemplate.h"
 #include "Estructuras/estructuraUsuarios.h"
 #include "Estructuras/estructuraAerolinea.h"
+#include "Estructuras/estructuraAvion.h"
 #include "gestionDatos.h"
 #include "WriterFile.h"
 
@@ -46,14 +47,22 @@ int main(){
     cout << "Action :" << ges.agregarTrayectorias("11/Bogota/Madrid/2/1600/600/50/0",5662)<< endl;
     cout << "agregar" << endl;
     t.inorden(t.reRaiz());
-    /*
-    lista<vueloes> ve = aero->buscar(5662)->itinerario;
+
+    lista<vueloEspecifico> ve = aero->buscar(5662)->itinerario;
     cout << "entro : "<< endl;
 
-    //ve.imprimir();
+    ve.imprimirItinerarios();
+
+
+    lista<avion> avi = aero->buscar(5662)->aviones;
+    cout << "entro : "<< endl;
+
+    avi.imprimirAviones();
+    /*
     string temp = "999/New_York/Madrid/2/1600/600/50/0";
     cout << "Estado de la operación : " << ges.agregarTrayectorias(temp,5662) << endl;
-    t.inorden(t.reRaiz());*/
+    t.inorden(t.reRaiz());
     //wf.write("Avianca_T.txt","876/New_York/Madrid/2/1600/600/50/0");
+    */
     return 0;
 }

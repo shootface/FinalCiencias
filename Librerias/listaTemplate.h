@@ -19,7 +19,8 @@ public:
     cab = NULL;
     tam = 0;
   }
-  void imprimir();
+  void imprimirItinerarios();
+  void imprimirAviones();
   bool lista_vacia();
   int tamano_lista();
   T obtenerDato(int pos);
@@ -157,7 +158,7 @@ int lista<T>::tamano_lista() {
 }
 
 template <class T>
-void lista<T>::imprimir() {
+void lista<T>::imprimirItinerarios() {
 
   if (lista_vacia()) {
     cout << "La lista no tiene Informacion" << endl;
@@ -180,5 +181,30 @@ void lista<T>::imprimir() {
     }
   }
 }
+
+template <typename T>
+void lista<T>::imprimirAviones() {
+  if (lista_vacia()) {
+    cout << "La lista no tiene Informacion" << endl;
+  } else {
+    cout << "La informacion de la lista es:" << endl;
+
+    nodo<T> *aux;
+    aux = cab;
+
+    int pos = 1;
+    while (aux != NULL) {
+      cout << "  " << endl;
+      cout << "Info " << pos << ": " << aux->dato.disponibilidad << endl;
+      cout << "Info " << pos << ": " << aux->dato.nombre << endl;
+      cout << "Info " << pos << ": " << aux->dato.fabricante << endl;
+      cout << "Info " << pos << ": " << aux->dato.capacidad << endl;
+      cout << "Info " << pos << ": " << aux->dato.tipo << endl;
+      aux = aux->sig;
+      pos++;
+    }
+  }
+}
+
 
 #endif

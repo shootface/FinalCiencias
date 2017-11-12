@@ -1,9 +1,16 @@
-#include<iostream>
-#ifndef esavion
-#define esavion
+#include <iostream>
+
+#ifndef ESTRUCTURAAVIONES_H
+#define ESTRUCTURAAVIONES_H
+
 using namespace std;
-struct avion{
-    int capacidad;
-    string name;
+
+struct avion {
+  bool disponibilidad;
+  string nombre;
+  string fabricante;
+  int capacidad;
+  string tipo;
 };
+
 #endif

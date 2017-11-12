@@ -7,6 +7,7 @@
 #include "Estructuras/estructuraAerolinea.h"
 #include "Estructuras/estructuraRelleno.h"
 #include "Estructuras/estructuraUsuarios.h"
+#include "Estructuras/estructuraAvion.h"
 
 #ifndef GESTIONDATOS_H
 #define GESTIONDATOS_H
@@ -18,21 +19,21 @@ class gestionDatos {
   arbinor<airline> aer;
   arbinor<vueloPlaneado> vp;
   lista<vueloEspecifico> ve;
+  lista<avion> aviones;
 
 public:
   gestionDatos() {}
   int cargarAerolinea();
   int cargarUsuarios();
   int agregarTrayectorias(string t, int idAero);
-  int agregarItinerarios(string t, int idAero);
   arbinor<user> *getArbinorUser() { return usuarios; };
   arbinor<airline> *getArbinorAirline() { return aerolineas; };
 
 private:
   int agregarTrayectoria(vueloPlaneado *vpnew, int idAero);
-  int agregarItinerarios(vueloEspecifico vsnew, int idAero);
   void cargarTrayectorias(arbinor<airline> *arbolAir);
   void cargarItinerarios(arbinor<airline> *arbolAir);
+  void cargarAviones(arbinor<airline> *arbolAir);
 };
 /*
         Llama la libreria encargada de la gestion de los datos de
@@ -72,6 +73,7 @@ int gestionDatos::cargarAerolinea() {
     aerolineas = &aer;
     cargarTrayectorias(aerolineas);
     cargarItinerarios(aerolineas);
+    cargarAviones(aerolineas);
     return 1;
   } else {
     return 0;
@@ -139,9 +141,24 @@ void gestionDatos::cargarItinerarios(arbinor<airline> *arbolAir) {
     readerFile<vueloEspecifico> rdves;
     if (rdves.readFile(name)) {
       rdves.itinerarios();
-      ve = rdves.getLista();
+      ve = rdves.getLista(1);
       airline *tempair = arbolAir->buscar(temp.id);
       tempair->itinerario = ve;
+    }
+  }
+}
+
+void gestionDatos::cargarAviones(arbinor<airline> *arbolAir) {
+  cola<tRelleno> *cs = arbolAir->inordenCola();
+  while (!cs->ColaVacia()) {
+    tRelleno temp = cs->AtenderCola();
+    string name = "Archivos/" + temp.name + "_V.txt";
+    readerFile<avion> rdAvion;
+    if (rdAvion.readFile(name)) {
+      rdAvion.aviones();
+      aviones = rdAvion.getLista(2);
+      airline *tempair = arbolAir->buscar(temp.id);
+      tempair->aviones = aviones;
     }
   }
 }

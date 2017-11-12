@@ -3,6 +3,7 @@
 
 #include "estructuraVueloEspecifico.h"
 #include "estructuraVueloPlaneado.h"
+#include "estructuraAvion.h"
 
 #ifndef ESTRUCTURAAEROLINE_H
 #define ESTRUCTURAAEROLINE_H
@@ -17,6 +18,7 @@ struct airline {
   airline *der;
   arbinor<vueloPlaneado> trayectos;
   lista<vueloEspecifico> itinerario;
+  lista<avion> aviones;
 };
 
 #endif
