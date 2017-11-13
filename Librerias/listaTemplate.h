@@ -18,7 +18,6 @@ public:
     cab = NULL;
     tam = 0;
   }
-  void imprimirItinerarios();
   bool lista_vacia();
   int tamano_lista();
   T obtenerDato(int pos);
@@ -87,7 +86,7 @@ T lista<T>::obtenerDato(int pos) {
   nodo<T> *aux;
   aux = cab;
 
-  int p = 1;
+  int p = 0;
   while ((p < pos) && (aux != NULL)) {
     aux = aux->sig;
     p++;
@@ -97,7 +96,7 @@ T lista<T>::obtenerDato(int pos) {
     return aux->dato;
   }
 
-  return aux->dato; // Aca esta el error
+  return aux->dato;
 }
 
 template <class T>
@@ -132,7 +131,7 @@ bool lista<T>::lista_vacia() {
     	return false;
   	}
 }
-	
+
 template <class T>
 int lista<T>::tamano_lista() {
 	return tam;

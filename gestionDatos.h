@@ -145,7 +145,17 @@ void gestionDatos::cargarItinerarios(arbinor<airline> *arbolAir) {
     	readerFile<vueloEspecifico> rdves;
     	if (rdves.readFile(name)) {
       		rdves.itinerarios();
-      		ve = rdves.getLista(1);
+      		ve = rdves.getLista(1);/*
+          for (int i = 0; i < ve.tamano_lista(); i++) {
+          vueloEspecifico auxVueloEs;
+          auxVueloEs = ve.obtenerDato(i);
+          cout << "ID VueloEs: " << auxVueloEs.id << endl;
+          vueloPlaneado *auxVueloPla = vp.buscar(auxVueloEs.idVueloPlaneado);
+          cout << "ID VueloPla: " << auxVueloPla->id << endl;
+            if (auxVueloPla != NULL) {
+              ve.obtenerDato(i).vuelo = *auxVueloPla;
+            }
+          }*/
       		airline *tempair = arbolAir->buscar(temp.id);
       		tempair->itinerario = ve;
     	}

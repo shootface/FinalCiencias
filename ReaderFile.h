@@ -248,11 +248,12 @@ template <class T> void readerFile<T>::organizarAviones(vector<string> lec) {
 
 template <class T> avion readerFile<T>::crearAvion(vector<string> pt) {
   avion t;
-  t.disponibilidad = atoi(pt[0].c_str());
-  t.nombre = pt[1];
-  t.fabricante = pt[2];
-  t.capacidad = atoi(pt[3].c_str());
-  int tipo = atoi(pt[4].c_str());
+  t.id = atoi(pt[0].c_str());
+  t.disponibilidad = atoi(pt[1].c_str());
+  t.nombre = pt[2];
+  t.fabricante = pt[3];
+  t.capacidad = atoi(pt[4].c_str());
+  int tipo = atoi(pt[5].c_str());
   if (tipo == 1) {
     t.tipo = "Intercontinental";
     t.sillas = numeracionSillas(1);

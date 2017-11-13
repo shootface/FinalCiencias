@@ -31,6 +31,7 @@ void airline::imprimirAviones() {
     for (int i = 0; i < aviones.tamano_lista(); i++) {
       aux = aviones.obtenerDato(i);
       cout << "Avion: " << i << endl;
+      cout << "ID: " << aux.id << endl;
       if (aux.disponibilidad == true) {
         cout << "Disponibilidad: Disponible" << endl;
       } else {
@@ -52,7 +53,7 @@ void airline::imprimirItinerarios() {
       aux = itinerario.obtenerDato(i);
       cout << "Itinerario: " << i << endl;
       cout << "ID: " << aux.id << endl;
-      cout << "ID vuelo planeado: " << aux.idVueloPlaneado << endl;
+      cout << "ID vuelo planeado: " << aux.idVueloPlaneado << " Destiono" << aux.vuelo.origin << " - " << aux.vuelo.posting << endl;
       cout << "Sillas disponibles: " << aux.numeroSillasDisponibles << endl;
       cout << "Fecha: " << aux.fecha << endl;
       cout << "Precio Adulto: " << aux.precioAdulto << endl;

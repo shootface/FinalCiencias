@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "estructuraAvion.h"
+
 #ifndef ESTRUCTURAVUELOPLANEADO_H
 #define ESTRUCTURAVUELOPLANEADO_H
 
@@ -35,6 +37,10 @@ struct vueloPlaneado {
   	vueloPlaneado *izq;
   	// posible escala
   	int nextT;
+    avion avionVuelo;
+    void numeroDeSillas() {
+      numS = avionVuelo.capacidad;
+    }
 };
 
 #endif

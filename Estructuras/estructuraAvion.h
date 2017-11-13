@@ -10,23 +10,13 @@
 using namespace std;
 
 struct avion {
+  int id;
   bool disponibilidad;
   string nombre;
   string fabricante;
   int capacidad;
   string tipo;
   lista<silla> sillas;
-  void imprimirSillas();
 };
-
-void avion::imprimirSillas() {
-  silla aux;
-  if (!sillas.lista_vacia()) {
-    for (int i = 0; i < sillas.tamano_lista(); i++) {
-      aux = sillas.obtenerDato(i);
-      cout << aux.id << endl;
-    }
-  }
-}
 
 #endif
