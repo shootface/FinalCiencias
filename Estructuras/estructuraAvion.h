@@ -1,5 +1,9 @@
 #include <iostream>
 
+#include "../Librerias/listaTemplate.h"
+
+#include "estructuraSilla.h"
+
 #ifndef ESTRUCTURAAVIONES_H
 #define ESTRUCTURAAVIONES_H
 
@@ -11,6 +15,18 @@ struct avion {
   string fabricante;
   int capacidad;
   string tipo;
+  lista<silla> sillas;
+  void imprimirSillas();
 };
+
+void avion::imprimirSillas() {
+  silla aux;
+  if (!sillas.lista_vacia()) {
+    for (int i = 0; i < sillas.tamano_lista(); i++) {
+      aux = sillas.obtenerDato(i);
+      cout << aux.id << endl;
+    }
+  }
+}
 
 #endif

@@ -20,7 +20,6 @@ public:
     tam = 0;
   }
   void imprimirItinerarios();
-  void imprimirAviones();
   bool lista_vacia();
   int tamano_lista();
   T obtenerDato(int pos);
@@ -110,7 +109,7 @@ T lista<T>::obtenerDato(int pos) {
     return aux->dato;
   }
 
-  return aux->dato;
+  return aux->dato; // Aca esta el error
 }
 
 template <class T>
@@ -156,55 +155,5 @@ int lista<T>::tamano_lista() {
 
   return tam;
 }
-
-template <class T>
-void lista<T>::imprimirItinerarios() {
-
-  if (lista_vacia()) {
-    cout << "La lista no tiene Informacion" << endl;
-  } else {
-    cout << "La informacion de la lista es:" << endl;
-
-    nodo<T> *aux;
-    aux = cab;
-
-    int pos = 1;
-    while (aux != NULL) {
-      cout << "  " << endl;
-      cout << "Info " << pos << ": " << aux->dato.idVueloPlaneado << endl;
-      cout << "Info " << pos << ": " << aux->dato.numeroSillasDisponibles << endl;
-      cout << "Info " << pos << ": " << aux->dato.fecha << endl;
-      cout << "Info " << pos << ": " << aux->dato.precioAdulto << endl;
-      cout << "Info " << pos << ": " << aux->dato.precioNino << endl;
-      aux = aux->sig;
-      pos++;
-    }
-  }
-}
-
-template <typename T>
-void lista<T>::imprimirAviones() {
-  if (lista_vacia()) {
-    cout << "La lista no tiene Informacion" << endl;
-  } else {
-    cout << "La informacion de la lista es:" << endl;
-
-    nodo<T> *aux;
-    aux = cab;
-
-    int pos = 1;
-    while (aux != NULL) {
-      cout << "  " << endl;
-      cout << "Info " << pos << ": " << aux->dato.disponibilidad << endl;
-      cout << "Info " << pos << ": " << aux->dato.nombre << endl;
-      cout << "Info " << pos << ": " << aux->dato.fabricante << endl;
-      cout << "Info " << pos << ": " << aux->dato.capacidad << endl;
-      cout << "Info " << pos << ": " << aux->dato.tipo << endl;
-      aux = aux->sig;
-      pos++;
-    }
-  }
-}
-
 
 #endif

@@ -6,12 +6,14 @@
 
 #include "Librerias/arbolTemplate.h"
 #include "Librerias/colaTemplate.h"
+#include "Librerias/listaTemplate.h"
 
 #include "Estructuras/estructuraAerolinea.h"
 #include "Estructuras/estructuraAvion.h"
 #include "Estructuras/estructuraUsuarios.h"
 #include "Estructuras/estructuraVueloEspecifico.h"
 #include "Estructuras/estructuraVueloPlaneado.h"
+#include "Estructuras/estructuraSilla.h"
 
 #ifndef READERFILE_H
 #define READERFILE_H
@@ -45,6 +47,9 @@ public:
   vueloPlaneado *crearPlanTrayectos(vector<string> pt);
   vueloEspecifico crearItinerario(vector<string> pt);
   avion crearAvion(vector<string> pt);
+  lista<silla> sillasIntercontinetal;
+  lista<silla> sillasRegional;
+  lista<silla> numeracionSillas(int op);
 
 private:
 };
@@ -199,11 +204,12 @@ void readerFile<T>::organizarItinerarios(vector<string> lec) {
 template <class T>
 vueloEspecifico readerFile<T>::crearItinerario(vector<string> pt) {
   vueloEspecifico t;
-  t.idVueloPlaneado = atoi(pt[0].c_str());
-  t.numeroSillasDisponibles = atoi(pt[1].c_str());
-  t.fecha = pt[2];
-  t.precioAdulto = atof(pt[3].c_str());
-  t.precioNino = atof(pt[4].c_str());
+  t.id = atoi(pt[0].c_str());
+  t.idVueloPlaneado = atoi(pt[1].c_str());
+  t.numeroSillasDisponibles = atoi(pt[2].c_str());
+  t.fecha = pt[3];
+  t.precioAdulto = atof(pt[4].c_str());
+  t.precioNino = atof(pt[5].c_str());
   return t;
 }
 
@@ -231,11 +237,46 @@ template <class T> avion readerFile<T>::crearAvion(vector<string> pt) {
   int tipo = atoi(pt[4].c_str());
   if (tipo == 1) {
     t.tipo = "Intercontinental";
+    t.sillas = numeracionSillas(1);
   } else if (tipo == 2) {
     t.tipo = "Regional";
+    t.sillas = numeracionSillas(2);
   } else {
     t.tipo = "No definido";
   }
   return t;
 }
+
+template <class T> lista<silla> readerFile<T>::numeracionSillas(int op) {
+  if (op == 1) {
+    if(sillasIntercontinetal.lista_vacia()) {
+      silla aux;
+      int numFilas = 28;
+      int numColumnas = 9;
+      for (int i = 1; i <= numFilas; i++) {
+        char letra = 65; // ASCII (A,B,C,...,Z)
+        for (int j = 1; j <= numColumnas; j++, letra++) {
+          aux.id = to_string(i)+letra;
+          sillasIntercontinetal.insertar_final(aux);
+        }
+      }
+    }
+    return sillasIntercontinetal;
+  } else if (op == 2) {
+    if(sillasRegional.lista_vacia()) {
+      silla aux;
+      int numFilas = 24;
+      int numColumnas = 6;
+      for (int i = 1; i <= numFilas; i++) {
+        char letra = 65; // ASCII (A,B,C,...,Z)
+        for (int j = 1; j <= numColumnas; j++, letra++) {
+          aux.id = to_string(i)+letra;
+          sillasRegional.insertar_final(aux);
+        }
+      }
+    }
+    return sillasRegional;
+  }
+}
+
 #endif
