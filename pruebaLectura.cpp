@@ -44,21 +44,9 @@ int main(){
     arbinor<airline> *aero = ges.getArbinorAirline();
     arbinor<vueloPlaneado> t= aero->buscar(5662)->trayectos;
     //t.inorden(t.reRaiz());
-<<<<<<< HEAD
-    cout << "Action :" << ges.agregarTrayectorias("11/Bogota/Madrid/2/1600/600/50/0",5662)<< endl;
-    cout << "agregar" << endl;
-    t.inorden(t.reRaiz());
-
-    lista<vueloEspecifico> ve = aero->buscar(5662)->itinerario;
-    cout << "entro : "<< endl;
-    
-    ve.imprimirItinerarios();
-
-=======
     //cout << "Action :" << ges.agregarTrayectorias("11/Bogota/Madrid/2/1600/600/50/0",5662)<< endl;
     //cout << "agregar" << endl;
     //t.inorden(t.reRaiz());
->>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 
     airline *prueba = aero->buscar(5662);
     prueba->imprimirAviones();

@@ -10,13 +10,6 @@
 using namespace std;
 
 struct avion {
-<<<<<<< HEAD
-	bool disponibilidad;
-	string nombre;
-	string fabricante;
-	int capacidad;
-	string tipo;
-=======
   bool disponibilidad;
   string nombre;
   string fabricante;
@@ -24,7 +17,6 @@ struct avion {
   string tipo;
   lista<silla> sillas;
   void imprimirSillas();
->>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 };
 
 void avion::imprimirSillas() {

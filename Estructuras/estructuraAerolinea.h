@@ -13,16 +13,6 @@
 	plano de texto
 */
 struct airline {
-<<<<<<< HEAD
-	int id;
-	string name;
-	string bankacc;
-	airline *izq;
-	airline *der;
-	arbinor<vueloPlaneado> trayectos;
-	lista<vueloEspecifico> itinerario;
-	lista<avion> aviones;
-=======
   int id;
   string name;
   string bankacc;
@@ -33,7 +23,6 @@ struct airline {
   lista<avion> aviones;
   void imprimirItinerarios();
   void imprimirAviones();
->>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 };
 
 void airline::imprimirAviones() {
