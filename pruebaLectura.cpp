@@ -55,6 +55,7 @@ int main(){
     for (int i = 0; i < prueba->aviones.tamano_lista(); i++) {
       cout << "Avion: " << i << endl;
       prueba->aviones.obtenerDato(i).imprimirSillas();
+      cout << endl;
     }
     /*
     string temp = "999/New_York/Madrid/2/1600/600/50/0";

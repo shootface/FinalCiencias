@@ -10,9 +10,8 @@ using namespace std;
 
 template <class T>
 class lista {
-
-  nodo<T> *cab;
-  int tam;
+  	nodo<T> *cab;
+  	int tam;
 
 public:
   lista() {
@@ -31,66 +30,55 @@ public:
 
 template <class T>
 void lista<T>::insertar_pos(T infoNueva, int pos) {
-
-  if (pos > tam) {
-    insertar_final(infoNueva);
-  } else {
+	if (pos > tam) {
+    	insertar_final(infoNueva);
+  	} else {
     if (pos == 1) {
-      insertar_inicio(infoNueva);
+    	insertar_inicio(infoNueva);
     } else {
-      nodo<T> *nuevo, *aux;
-      nuevo = new nodo<T>;
-
-      nuevo->dato = infoNueva;
-      aux = cab;
-
-      int p = 1;
-      while ((p < pos - 1) && (aux != NULL)) {
-        aux = aux->sig;
-        p++;
-      }
-
-      nuevo->sig = aux->sig;
-      aux->sig = nuevo;
-    }
-    tam++;
-  }
+    	nodo<T> *nuevo, *aux;
+      	nuevo = new nodo<T>;
+		nuevo->dato = infoNueva;
+      	aux = cab;
+		int p = 1;
+    	while ((p < pos - 1) && (aux != NULL)) {
+        	aux = aux->sig;
+        	p++;
+      	}
+		nuevo->sig = aux->sig;
+      	aux->sig = nuevo;
+    	}
+    	tam++;
+  	}
 }
 
 template <class T>
 void lista<T>::insertar_final(T infoNueva) {
-
-  nodo<T> *nuevo;
-  nuevo = new nodo<T>;
-
-  nuevo->dato = infoNueva;
-  nuevo->sig = NULL;
-
-  if (tam == 0) {
-    cab = nuevo;
-  } else {
-    nodo<T> *aux;
-    aux = cab;
-
-    while (aux->sig != NULL) {
-      aux = aux->sig;
-    }
-    aux->sig = nuevo;
-  }
-  tam++;
+  	nodo<T> *nuevo;
+  	nuevo = new nodo<T>;
+	nuevo->dato = infoNueva;
+  	nuevo->sig = NULL;
+  	if (tam == 0) {
+    	cab = nuevo;
+  	} else {
+    	nodo<T> *aux;
+    	aux = cab;
+		while (aux->sig != NULL) {
+      	aux = aux->sig;
+    	}
+    	aux->sig = nuevo;
+  	}
+  	tam++;
 }
 
 template <class T>
 void lista<T>::insertar_inicio(T infoNueva) {
-
-  nodo<T> *nuevo;
-  nuevo = new nodo<T>;
-
-  nuevo->dato = infoNueva;
-  nuevo->sig = cab;
-  cab = nuevo;
-
-  tam++;
+	nodo<T> *nuevo;
+  	nuevo = new nodo<T>;
+	nuevo->dato = infoNueva;
+  	nuevo->sig = cab;
+  	cab = nuevo;
+	tam++;
 }
 
 template <class T>
@@ -114,46 +102,39 @@ T lista<T>::obtenerDato(int pos) {
 
 template <class T>
 bool lista<T>::eliminar(int pos) {
-
-  if (tam >= pos) {
-    nodo<T> *temp;
-    temp = cab;
-
+	if (tam >= pos) {
+    	nodo<T> *temp;
+    	temp = cab;
     if (pos == 1) {
-      cab = temp->sig;
-      delete temp;
+      	cab = temp->sig;
+      	delete temp;
     } else {
-      for (int i = 1; i < pos - 1; i++) {
+      	for (int i = 1; i < pos - 1; i++) {
         temp = temp->sig;
-      }
-
-      nodo<T> *aux;
-      aux = temp->sig;
-      temp->sig = aux->sig;
-
-      delete aux;
+    }
+	nodo<T> *aux;
+    aux = temp->sig;
+    temp->sig = aux->sig;
+	delete aux;
     }
     tam--;
     return true;
-  } else {
-    return false;
-  }
+  	} else {
+    	return false;
+	}
 }
 
 template <class T>
 bool lista<T>::lista_vacia() {
-
-  if (tam == 0) {
-    return true;
-  } else {
-    return false;
-  }
+	if (tam == 0) {
+    	return true;
+  	} else {
+    	return false;
+  	}
 }
 
 template <class T>
 int lista<T>::tamano_lista() {
-
-  return tam;
+	return tam;
 }
-
 #endif
