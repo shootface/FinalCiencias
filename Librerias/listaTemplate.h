@@ -14,6 +14,7 @@ class lista {
   	int tam;
 
 public:
+<<<<<<< HEAD
   	lista() {
     	cab = NULL;
     	tam = 0;
@@ -27,6 +28,20 @@ public:
   	void insertar_final(T infoNueva);
   	void insertar_pos(T infoNueva, int pos);
   	void insertar_inicio(T infoNueva);
+=======
+  lista() {
+    cab = NULL;
+    tam = 0;
+  }
+  void imprimirItinerarios();
+  bool lista_vacia();
+  int tamano_lista();
+  T obtenerDato(int pos);
+  bool eliminar(int pos);
+  void insertar_final(T infoNueva);
+  void insertar_pos(T infoNueva, int pos);
+  void insertar_inicio(T infoNueva);
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 };
 
 template <class T>
@@ -63,7 +78,11 @@ void lista<T>::insertar_final(T infoNueva) {
     	cab = nuevo;
   	} else {
     	nodo<T> *aux;
+<<<<<<< HEAD
     	aux = cab;   
+=======
+    	aux = cab;
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 		while (aux->sig != NULL) {
       	aux = aux->sig;
     	}
@@ -84,6 +103,7 @@ void lista<T>::insertar_inicio(T infoNueva) {
 
 template <class T>
 T lista<T>::obtenerDato(int pos) {
+<<<<<<< HEAD
 	nodo<T> *aux;
   	aux = cab;
 	int p = 1;
@@ -95,6 +115,23 @@ T lista<T>::obtenerDato(int pos) {
     	return aux->dato;
   	}
 	return aux->dato;
+=======
+
+  nodo<T> *aux;
+  aux = cab;
+
+  int p = 1;
+  while ((p < pos) && (aux != NULL)) {
+    aux = aux->sig;
+    p++;
+  }
+
+  if (aux != NULL) {
+    return aux->dato;
+  }
+
+  return aux->dato; // Aca esta el error
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 }
 
 template <class T>
@@ -133,6 +170,7 @@ bool lista<T>::lista_vacia() {
 template <class T>
 int lista<T>::tamano_lista() {
 	return tam;
+<<<<<<< HEAD
 }
 
 template <class T>
@@ -180,4 +218,7 @@ void lista<T>::imprimirAviones() {
   	}
 }
 
+=======
+}
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 #endif

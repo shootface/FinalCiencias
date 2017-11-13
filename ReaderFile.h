@@ -6,12 +6,14 @@
 
 #include "Librerias/arbolTemplate.h"
 #include "Librerias/colaTemplate.h"
+#include "Librerias/listaTemplate.h"
 
 #include "Estructuras/estructuraAerolinea.h"
 #include "Estructuras/estructuraAvion.h"
 #include "Estructuras/estructuraUsuarios.h"
 #include "Estructuras/estructuraVueloEspecifico.h"
 #include "Estructuras/estructuraVueloPlaneado.h"
+#include "Estructuras/estructuraSilla.h"
 
 #ifndef READERFILE_H
 #define READERFILE_H
@@ -20,6 +22,7 @@ using namespace std;
 
 template <class T> class readerFile {
 public:
+<<<<<<< HEAD
 	arbinor<T> tree;
 	lista<T> iti;
 	lista<T> avi;
@@ -45,6 +48,36 @@ public:
 	vueloPlaneado *crearPlanTrayectos(vector<string> pt);
 	vueloEspecifico crearItinerario(vector<string> pt);
 	avion crearAvion(vector<string> pt);
+=======
+  arbinor<T> tree;
+  lista<T> iti;
+  lista<T> avi;
+  vector<string> lecturaFinal;
+  readerFile() {}
+  int readFile(string name);
+  arbinor<T> getArbol();
+  lista<T> getLista(int op);
+  vector<string> getLectura() { return lecturaFinal; };
+  void usuarios();
+  void aerolineas();
+  void trayectos();
+  void itinerarios();
+  void aviones();
+  void organizarUsuarios(vector<string> lec);
+  void organizarAerolineas(vector<string> lec);
+  void organizarPlanTrayectos(vector<string> lec);
+  void organizarItinerarios(vector<string> lec);
+  void organizarAviones(vector<string> lec);
+  vector<string> split(string dato);
+  user *crearUsuario(vector<string> users);
+  airline *crearAerolinea(vector<string> airlines);
+  vueloPlaneado *crearPlanTrayectos(vector<string> pt);
+  vueloEspecifico crearItinerario(vector<string> pt);
+  avion crearAvion(vector<string> pt);
+  lista<silla> sillasIntercontinetal;
+  lista<silla> sillasRegional;
+  lista<silla> numeracionSillas(int op);
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 
 private:
 };
@@ -64,6 +97,7 @@ template <typename T> lista<T> readerFile<T>::getLista(int op) {
 template <class T> int readerFile<T>::readFile(string name) {
 	// Defino un string donde voy a guardar cada linea leida
   	string lectura;
+<<<<<<< HEAD
   	/* 
 	  	Defino un elemento de tipo fstream que se encarga de crear el buffer para
 	  	la  lectura del archivo
@@ -74,14 +108,33 @@ template <class T> int readerFile<T>::readFile(string name) {
 	  	mientras exista una linea que leer va a hacer lo que esta dentro de la
   		estructura iterativa
   	*/	
+=======
+  	/*
+	  	Defino un elemento de tipo fstream que se encarga de crear el buffer para
+	  	la  lectura del archivo
+  	*/
+  	fstream fs;
+
+  	/*
+	  	mientras exista una linea que leer va a hacer lo que esta dentro de la
+  		estructura iterativa
+  	*/
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
   	if (ifstream(name.c_str())) {
     // Abrir el archivo mediante el nombre que paso por parametro
     	fs.open(name.c_str(), ios::in);
     	do {
+<<<<<<< HEAD
       		/* 
 		  		obtiene una linea de lectura que va ser guardada en la variable
       			"lectura"
       		*/	
+=======
+      		/*
+		  		obtiene una linea de lectura que va ser guardada en la variable
+      			"lectura"
+      		*/
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
       		getline(fs, lectura);
       		// agrega esa linea leida al vector principal
       		lecturaFinal.push_back(lectura);
@@ -114,7 +167,11 @@ template <class T> vector<string> readerFile<T>::split(string dato) {
  	Recorre el vector y envia cada linea leida que esta
 	almacenado en el vector y lo envia al metodo split con
 	el fin de organizar lo que esta dentro de esa linea
+<<<<<<< HEAD
 */	
+=======
+*/
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 template <class T> void readerFile<T>::usuarios() {
   	organizarUsuarios(getLectura());
 }
@@ -141,7 +198,11 @@ template <class T> user *readerFile<T>::crearUsuario(vector<string> users) {
 	Recorre el vector y envia cada linea leida que esta
 	almacenado en el vector y lo envia al metodo split con
 	el fin de organizar lo que esta dentro de esa linea
+<<<<<<< HEAD
 */	
+=======
+*/
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 template <class T> void readerFile<T>::aerolineas() {
   	organizarAerolineas(getLectura());
 }
@@ -214,6 +275,7 @@ void readerFile<T>::organizarItinerarios(vector<string> lec) {
 
 template <class T>
 vueloEspecifico readerFile<T>::crearItinerario(vector<string> pt) {
+<<<<<<< HEAD
   	vueloEspecifico t;
   	t.id = atoi(pt[0].c_str());
   	t.idVueloPlaneado = atoi(pt[1].c_str());
@@ -222,6 +284,16 @@ vueloEspecifico readerFile<T>::crearItinerario(vector<string> pt) {
   	t.precioAdulto = atof(pt[4].c_str());
   	t.precioNino = atof(pt[5].c_str());
   	return t;
+=======
+  vueloEspecifico t;
+  t.id = atoi(pt[0].c_str());
+  t.idVueloPlaneado = atoi(pt[1].c_str());
+  t.numeroSillasDisponibles = atoi(pt[2].c_str());
+  t.fecha = pt[3];
+  t.precioAdulto = atof(pt[4].c_str());
+  t.precioNino = atof(pt[5].c_str());
+  return t;
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 }
 
 // LOS SIGUIENTES METODOS SON UNICOS PARA RECORRER AVIONES
@@ -242,6 +314,7 @@ template <class T> void readerFile<T>::organizarAviones(vector<string> lec) {
 }
 
 template <class T> avion readerFile<T>::crearAvion(vector<string> pt) {
+<<<<<<< HEAD
   	avion t;
   	t.disponibilidad = atoi(pt[0].c_str());
   	t.nombre = pt[1];
@@ -258,4 +331,55 @@ template <class T> avion readerFile<T>::crearAvion(vector<string> pt) {
   	return t;
 }
 
+=======
+  avion t;
+  t.disponibilidad = atoi(pt[0].c_str());
+  t.nombre = pt[1];
+  t.fabricante = pt[2];
+  t.capacidad = atoi(pt[3].c_str());
+  int tipo = atoi(pt[4].c_str());
+  if (tipo == 1) {
+    t.tipo = "Intercontinental";
+    t.sillas = numeracionSillas(1);
+  } else if (tipo == 2) {
+    t.tipo = "Regional";
+    t.sillas = numeracionSillas(2);
+  } else {
+    t.tipo = "No definido";
+  }
+  return t;
+}
+
+template <class T> lista<silla> readerFile<T>::numeracionSillas(int op) {
+  if (op == 1) {
+    if(sillasIntercontinetal.lista_vacia()) {
+      silla aux;
+      int numFilas = 28;
+      int numColumnas = 9;
+      for (int i = 1; i <= numFilas; i++) {
+        char letra = 65; // ASCII (A,B,C,...,Z)
+        for (int j = 1; j <= numColumnas; j++, letra++) {
+          aux.id = to_string(i)+letra;
+          sillasIntercontinetal.insertar_final(aux);
+        }
+      }
+    }
+    return sillasIntercontinetal;
+  } else if (op == 2) {
+    if(sillasRegional.lista_vacia()) {
+      silla aux;
+      int numFilas = 24;
+      int numColumnas = 6;
+      for (int i = 1; i <= numFilas; i++) {
+        char letra = 65; // ASCII (A,B,C,...,Z)
+        for (int j = 1; j <= numColumnas; j++, letra++) {
+          aux.id = to_string(i)+letra;
+          sillasRegional.insertar_final(aux);
+        }
+      }
+    }
+    return sillasRegional;
+  }
+}
+>>>>>>> 0758aff653eebdf0e496d735b5fb19b134560611
 #endif
