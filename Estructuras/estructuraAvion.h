@@ -11,6 +11,7 @@ using namespace std;
 
 struct avion {
   int id;
+  int idVueloPlaneado;
   bool disponibilidad;
   string nombre;
   string fabricante;

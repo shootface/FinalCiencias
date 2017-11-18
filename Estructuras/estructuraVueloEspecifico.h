@@ -6,22 +6,21 @@
 #define ESTRUCTURAVUELOESPECIFICO_H
 
 struct vueloEspecifico {
-  	int id;
-    int idVueloPlaneado;
-  	vueloPlaneado vuelo;
-  	int numeroSillasDisponibles = 0;
-  	string fecha;
-  	lista<silla> sillasVendidas;
-  	lista<silla> sillasDisponibles;
-  	double precioAdulto;
-  	double precioNino;
-    void asignarSillas();
-    void venderSilla(string silla);
-    void imprimirSillasDisponibles();
-    void imprimirSillasVendidas();
+  int id;
+  int idVueloPlaneado;
+  int numeroSillasDisponibles = 0;
+  string fecha;
+  lista<silla> sillasVendidas;
+  lista<silla> sillasDisponibles;
+  double precioAdulto;
+  double precioNino;
+  void asignarSillas(vueloPlaneado vuelo);
+  void venderSilla(string silla);
+  void imprimirSillasDisponibles();
+  void imprimirSillasVendidas();
 };
 
-void vueloEspecifico::asignarSillas() {
+void vueloEspecifico::asignarSillas(vueloPlaneado vuelo) {
   silla aux;
   for (int i = 0; i < vuelo.avionVuelo.sillas.tamano_lista(); i++) {
     aux = vuelo.avionVuelo.sillas.obtenerDato(i);

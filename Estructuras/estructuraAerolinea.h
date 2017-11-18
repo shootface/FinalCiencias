@@ -22,6 +22,7 @@ struct airline {
   lista<vueloEspecifico> itinerario;
   lista<avion> aviones;
   void imprimirItinerarios();
+  void imprimirTrayectos();
   void imprimirAviones();
 };
 
@@ -46,6 +47,11 @@ void airline::imprimirAviones() {
   }
 }
 
+void airline::imprimirTrayectos() {
+  cout << trayectos.buscar(1)->origin << " - "<< trayectos.buscar(1)->posting <<endl;
+  cout << trayectos.buscar(1)->avionVuelo.capacidad << endl;
+}
+
 void airline::imprimirItinerarios() {
   vueloEspecifico aux;
   if (!itinerario.lista_vacia()) {
@@ -53,7 +59,7 @@ void airline::imprimirItinerarios() {
       aux = itinerario.obtenerDato(i);
       cout << "Itinerario: " << i << endl;
       cout << "ID: " << aux.id << endl;
-      cout << "ID vuelo planeado: " << aux.idVueloPlaneado << " Destiono" << aux.vuelo.origin << " - " << aux.vuelo.posting << endl;
+      cout << "ID vuelo planeado: " << aux.idVueloPlaneado << endl;
       cout << "Sillas disponibles: " << aux.numeroSillasDisponibles << endl;
       cout << "Fecha: " << aux.fecha << endl;
       cout << "Precio Adulto: " << aux.precioAdulto << endl;

@@ -1,6 +1,6 @@
-1/1/Boeing777/BoeingCommercialAirplanes/277/1
-2/1/Boeing747/BoeingCommercialAirplanes/416/2
-3/1/Boeing787/BoeingCommercialAirplanes/250/2
-4/1/AirbusA330/Airbus/252/1
-5/1/AirbusA321/Airbus/194/2
-6/1/ATR-72/ATR/68/1
+1/1/Boeing777/BoeingCommercialAirplanes/277/1/1
+2/1/Boeing747/BoeingCommercialAirplanes/416/2/2
+3/1/Boeing787/BoeingCommercialAirplanes/250/2/3
+4/1/AirbusA330/Airbus/252/1/4
+5/1/AirbusA321/Airbus/194/2/5
+6/1/ATR-72/ATR/68/1/3
