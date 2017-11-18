@@ -1,0 +1,6 @@
+7/1/Boeing777/BoeingCommercialAirplanes/277/1
+8/1/EMB-175/JetsEmbraer/76/2
+9/1/Boeing737/BoeingCommercialAirplanes/210/2
+10/1/Boeing787/BoeingCommercialAirplanes/250/2
+11/1/EMB-190/JetsEmbraer/99/2
+12/1/EMB-170/JetsEmbraer/76/1 
