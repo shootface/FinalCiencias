@@ -123,13 +123,11 @@ template <class T> vector<string> readerFile<T>::split(string dato) {
 template <class T> void readerFile<T>::usuarios() {
   organizarUsuarios(getLectura());
 }
-
 template <class T> void readerFile<T>::organizarUsuarios(vector<string> lec) {
   for (int i = 0; i < lec.size() - 1; i++) {
     tree.insertar(crearUsuario(split(lec[i])));
   }
 }
-
 template <class T> user *readerFile<T>::crearUsuario(vector<string> users) {
   user *u = new user;
   u->name = users[0];
@@ -139,7 +137,6 @@ template <class T> user *readerFile<T>::crearUsuario(vector<string> users) {
   u->age = atoi(users[4].c_str());
   return u;
 }
-
 // LOS SIGUIENTES METODOS SON UNICOS PARA RECORRER LAS AEROLINEAS
 
 /*
@@ -150,13 +147,11 @@ template <class T> user *readerFile<T>::crearUsuario(vector<string> users) {
 template <class T> void readerFile<T>::aerolineas() {
   organizarAerolineas(getLectura());
 }
-
 template <class T> void readerFile<T>::organizarAerolineas(vector<string> lec) {
   for (int i = 0; i < lec.size() - 1; i++) {
     tree.insertar(crearAerolinea(split(lec[i])));
   }
 }
-
 template <class T>
 airline *readerFile<T>::crearAerolinea(vector<string> airlines) {
   airline *a = new airline;
@@ -176,7 +171,6 @@ airline *readerFile<T>::crearAerolinea(vector<string> airlines) {
 template <class T> void readerFile<T>::trayectos() {
   organizarPlanTrayectos(getLectura());
 }
-
 template <class T>
 void readerFile<T>::organizarPlanTrayectos(vector<string> lec) {
   for (int i = 0; i < lec.size() - 1; i++) {
