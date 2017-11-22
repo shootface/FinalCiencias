@@ -1,5 +1,6 @@
 #include "ReaderFile.h"
 #include "WriterFile.h"
+#include "busquedasDatos.h"
 
 #include "Librerias/arbolTemplate.h"
 #include "Librerias/colaTemplate.h"
@@ -28,7 +29,12 @@ public:
   int agregarTrayectorias(string t, int idAero);
   arbinor<user> *getArbinorUser() { return usuarios; };
   arbinor<airline> *getArbinorAirline() { return aerolineas; };
-
+  /*
+	Meotdos encargados de la busqueda dentro de estas estructuras
+	estos metodos con solo una llamada ya que se creo una clase encargada
+	de realizar estas busquedas
+  */
+	void buscarItinerarios();
 private:
   int agregarTrayectoria(vueloPlaneado *vpnew, int idAero);
   void cargarTrayectorias(arbinor<airline> *arbolAir);
@@ -146,7 +152,6 @@ void gestionDatos::cargarTrayectorias(arbinor<airline> *arbolAir) {
     }
   }
 }
-
 void gestionDatos::cargarItinerarios(arbinor<airline> *arbolAir) {
   cola<tRelleno> *cs = arbolAir->inordenCola();
   while (!cs->ColaVacia()) {
@@ -161,7 +166,6 @@ void gestionDatos::cargarItinerarios(arbinor<airline> *arbolAir) {
     }
   }
 }
-
 void gestionDatos::cargarAviones(arbinor<airline> *arbolAir) {
   cola<tRelleno> *cs = arbolAir->inordenCola();
   while (!cs->ColaVacia()) {
@@ -193,6 +197,11 @@ int gestionDatos::agregarTrayectoria(vueloPlaneado *vpnew, int idAero) {
   } else {
     return 0;
   }
+}
+/*METODOS DE BUSQUEDA*/
+void gestionDatos::buscarItinerarios(){
+	busDatos bs;
+	bs.busIti(aer);
 }
 
 #endif

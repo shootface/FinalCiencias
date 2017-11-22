@@ -41,18 +41,20 @@ int main(){
     writerFile wf;
     ges.cargarUsuarios();
     ges.cargarAerolinea();
-    arbinor<airline> *aero = ges.getArbinorAirline();
-    arbinor<vueloPlaneado> t= aero->buscar(5662)->trayectos;
+    cout << "Ahora vamos a realizar una busque de los itinerarios" << endl;
+    ges.buscarItinerarios(); 
+    //arbinor<airline> *aero = ges.getArbinorAirline();
+    //arbinor<vueloPlaneado> t= aero->buscar(5662)->trayectos;
     //t.inorden(t.reRaiz());
     //cout << "Action :" << ges.agregarTrayectorias("11/Bogota/Madrid/2/1600/600/50/0",5662)<< endl;
     //cout << "agregar" << endl;
     //t.inorden(t.reRaiz());
-
+    /*
     airline *prueba = aero->buscar(5662);
     prueba->imprimirAviones();
     prueba->imprimirItinerarios();
     //prueba->imprimirTrayectos();
-
+    */
     /*
     for (int i = 0; i < prueba->aviones.tamano_lista(); i++) {
       cout << "Avion: " << i << endl;

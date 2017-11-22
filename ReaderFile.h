@@ -54,9 +54,11 @@ public:
 private:
 };
 
-template <class T> arbinor<T> readerFile<T>::getArbol() { return tree; }
+template <class T> 
+arbinor<T> readerFile<T>::getArbol() { return tree; }
 
-template <typename T> lista<T> readerFile<T>::getLista(int op) {
+template <class T> 
+lista<T> readerFile<T>::getLista(int op) {
   if (op == 1) {
     return iti;
   } else if (op == 2) {
@@ -66,7 +68,8 @@ template <typename T> lista<T> readerFile<T>::getLista(int op) {
 }
 
 // Encargado de leer el archivo y guardar cada linea leida en un vector
-template <class T> int readerFile<T>::readFile(string name) {
+template <class T> 
+int readerFile<T>::readFile(string name) {
   // Defino un string donde voy a guardar cada linea leida
   string lectura;
   /*
@@ -99,7 +102,8 @@ template <class T> int readerFile<T>::readFile(string name) {
   }
 }
 
-template <class T> vector<string> readerFile<T>::split(string dato) {
+template <class T> 
+vector<string> readerFile<T>::split(string dato) {
   string temp;
   vector<string> datotemp;
   int found;
@@ -144,10 +148,12 @@ template <class T> user *readerFile<T>::crearUsuario(vector<string> users) {
         almacenado en el vector y lo envia al metodo split con
         el fin de organizar lo que esta dentro de esa linea
 */
-template <class T> void readerFile<T>::aerolineas() {
+template <class T> 
+void readerFile<T>::aerolineas() {
   organizarAerolineas(getLectura());
 }
-template <class T> void readerFile<T>::organizarAerolineas(vector<string> lec) {
+template <class T> 
+void readerFile<T>::organizarAerolineas(vector<string> lec) {
   for (int i = 0; i < lec.size() - 1; i++) {
     tree.insertar(crearAerolinea(split(lec[i])));
   }
@@ -168,7 +174,8 @@ airline *readerFile<T>::crearAerolinea(vector<string> airlines) {
         almacenado en el vector y lo envia al metodo split con
         el fin de organizar lo que esta dentro de esa linea
 */
-template <class T> void readerFile<T>::trayectos() {
+template <class T> 
+void readerFile<T>::trayectos() {
   organizarPlanTrayectos(getLectura());
 }
 template <class T>
@@ -181,7 +188,6 @@ void readerFile<T>::organizarPlanTrayectos(vector<string> lec) {
 template <class T>
 vueloPlaneado *readerFile<T>::crearPlanTrayectos(vector<string> pt) {
   vueloPlaneado *t = new vueloPlaneado;
-  cout << endl;
   t->id = atoi(pt[0].c_str());
   t->origin = pt[1];
   t->posting = pt[2];
@@ -199,17 +205,16 @@ vueloPlaneado *readerFile<T>::crearPlanTrayectos(vector<string> pt) {
         almacenado en el vector y lo envia al metodo split con
         el fin de organizar lo que esta dentro de esa linea
 */
-template <class T> void readerFile<T>::itinerarios() {
+template <class T> 
+void readerFile<T>::itinerarios() {
   organizarItinerarios(getLectura());
 }
-
 template <class T>
 void readerFile<T>::organizarItinerarios(vector<string> lec) {
   for (int i = 0; i < lec.size() - 1; i++) {
     iti.insertar_final(crearItinerario(split(lec[i])));
   }
 }
-
 template <class T>
 vueloEspecifico readerFile<T>::crearItinerario(vector<string> pt) {
   vueloEspecifico t;
@@ -220,7 +225,6 @@ vueloEspecifico readerFile<T>::crearItinerario(vector<string> pt) {
   t.precioNino = atof(pt[4].c_str());
   return t;
 }
-
 // LOS SIGUIENTES METODOS SON UNICOS PARA RECORRER AVIONES
 
 /*
@@ -232,13 +236,14 @@ template <class T> void readerFile<T>::aviones() {
   organizarAviones(getLectura());
 }
 
-template <class T> void readerFile<T>::organizarAviones(vector<string> lec) {
+template <class T> 
+void readerFile<T>::organizarAviones(vector<string> lec) {
   for (int i = 0; i < lec.size() - 1; i++) {
     avi.insertar_final(crearAvion(split(lec[i])));
   }
 }
-
-template <class T> avion readerFile<T>::crearAvion(vector<string> pt) {
+template <class T> 
+avion readerFile<T>::crearAvion(vector<string> pt) {
   avion t;
   t.id = atoi(pt[0].c_str());
   t.disponibilidad = atoi(pt[1].c_str());
@@ -258,8 +263,8 @@ template <class T> avion readerFile<T>::crearAvion(vector<string> pt) {
   t.idVueloPlaneado = atoi(pt[6].c_str());
   return t;
 }
-
-template <class T> lista<silla> readerFile<T>::numeracionSillas(int op) {
+template <class T> 
+lista<silla> readerFile<T>::numeracionSillas(int op) {
   if (op == 1) {
     if (sillasIntercontinetal.lista_vacia()) {
       silla aux;
