@@ -1,0 +1,14 @@
+55/Toronto/Ottawa/4/2300/0400/56
+56/Ottawa/Edmonton/5/0600/0800/57
+57/Edmonton/Quebec/5/0830/1000/0
+58/Toronto/Ottawa/4/2300/0400/0
+59/Ottawa/Edmonton/5/0600/0900/0
+60/Edmonton/Quebec/5/0830/1000/0
+61/Vancouver/Calgary/3/0900/1100/0
+62/Halifax/London/2/0800/1100/0
+63/Halifax/London/6/0800/1100/0
+64/Edmonton/Quebec/6/0830/1000/0
+65/Victoria/Hamilton/0/0300/0700/0
+66/Victoria/Hamilton/3/0300/0700/0
+67/Windsor/Oakville/2/0900/1200/0
+68/Windsor/Oakville/4/0900/1500/0

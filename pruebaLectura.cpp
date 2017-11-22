@@ -51,7 +51,7 @@ int main(){
     airline *prueba = aero->buscar(5662);
     prueba->imprimirAviones();
     prueba->imprimirItinerarios();
-    prueba->imprimirTrayectos();
+    //prueba->imprimirTrayectos();
 
     /*
     for (int i = 0; i < prueba->aviones.tamano_lista(); i++) {

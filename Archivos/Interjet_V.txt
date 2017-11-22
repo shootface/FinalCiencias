@@ -1,4 +1,6 @@
 25/1/AirbusA320/Airbus/150/1/43
 26/1/AirbusA320Neo/Airbus/150/2/44
-27/1/AirbusA321/Airbus/183/2/49
-28/1/SukhoiSuperjet/UAC/93/1/54
+27/1/AirbusA321/Airbus/183/2/47
+28/1/SukhoiSuperjet/UAC/93/1/48
+29/1/AirbusA321/Airbus/183/2/52
+30/1/SukhoiSuperjet/UAC/90/1/53

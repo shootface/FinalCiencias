@@ -194,8 +194,7 @@ vueloPlaneado *readerFile<T>::crearPlanTrayectos(vector<string> pt) {
   t->dayWeek = atoi(pt[3].c_str());
   t->hi = atoi(pt[4].c_str());
   t->hf = atoi(pt[5].c_str());
-  t->numS = atoi(pt[6].c_str());
-  t->nextT = atoi(pt[7].c_str());
+  t->nextT = atoi(pt[6].c_str());
   return t;
 }
 
@@ -222,10 +221,9 @@ vueloEspecifico readerFile<T>::crearItinerario(vector<string> pt) {
   vueloEspecifico t;
   t.id = atoi(pt[0].c_str());
   t.idVueloPlaneado = atoi(pt[1].c_str());
-  t.numeroSillasDisponibles = atoi(pt[2].c_str());
-  t.fecha = pt[3];
-  t.precioAdulto = atof(pt[4].c_str());
-  t.precioNino = atof(pt[5].c_str());
+  t.fecha = pt[2];
+  t.precioAdulto = atof(pt[3].c_str());
+  t.precioNino = atof(pt[4].c_str());
   return t;
 }
 

@@ -1,0 +1,5 @@
+39/1/ATR-42/ATR/48/2/70
+40/1/ATR-42/ATR/48/1/75
+41/1/EmbraerERJ145/Embraer/50/1/80
+42/1/EmbraerERJ170/Embraer/76/2/81
+43/1/HarbinY/HarbinAircraftManufacturingCorporation/17/2/70

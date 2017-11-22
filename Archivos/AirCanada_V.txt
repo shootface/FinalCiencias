@@ -1,0 +1,6 @@
+13/1/AirbusA319/Airbus/120/1/62
+14/1/AirbusA330/Airbus/146/2/63
+15/1/AirbusA321/Airbus/183/2/68
+16/1/Boeing767/BoeingCommercialAirplanes/211/2/62
+17/1/Boeing787/BoeingCommercialAirplanes/250/2/63
+18/1/EMB-190/JetsEmbraer/97/1/67

@@ -1,0 +1,14 @@
+123/Teheran/Madrid/2/0400/0900/124
+124/Madrid/Bogota/2/1000/1300/125
+125/Bogota/Miami/2/1330/1600/0
+126/Teheran/Miami/4/1400/1900/0
+127/Teheran/Bogota/4/1000/1400/0
+128/Qom/Adaban/5/1200/1300/0
+129/Gorgan/Karaj/0/1800/2100/0
+130/Zahedan/Arak/5/1400/1600/131
+131/Arak/Bukan/5/1700/2000/132
+133/Bukan/Bam/5/2200/0300/0
+134/Varamin/Dezful/4/0500/0800/0
+135/Zabol/Ferrara/6/1000/1300/136
+136/Ferrara/Mesina/6/1400/1600/137
+137/Mesina/Madrid/6/1700/1900/0

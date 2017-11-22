@@ -1,0 +1,14 @@
+109/Rosario/Bogota/5/1300/1900/0
+110/Milan/Florencia/2/1000/0300/111
+111/Florencia/Napoles/3/0400/0800/0
+112/Bolinia/Genova/2/0700/1000/0
+113/Siena/Padua/6/0200/0800/114
+114/Padua/Parma/0/0830/1000/0
+115/Trieste/Perugia/6/1500/1900/0
+116/Mesina/Lucca/5/0700/1000/117
+117/Lucca/Ferrara/3/1100/1600/118
+118/Ferrara/Pompeya/1/1700/1900/0
+119/Ancona/Alicante/0/1930/2100/0
+120/Trapani/Ravell/1/0200/0400/0
+121/Pavia/Cagliaria/2/0700/1200/0
+122/Urbino/Pescara/1/1300/1900/0

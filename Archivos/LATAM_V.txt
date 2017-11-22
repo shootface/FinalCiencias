@@ -1,0 +1,5 @@
+44/1/AirbusA319/Airbus/144/1/110
+45/1/AirbusA320/Airbus/170/2/111
+46/1/Boeing767/BoeingCommercialAirlines/220/2/113
+47/1/AirbusA321Neo/Airbus/236/1/114
+48/1/Boeing787/BoeingCommercialAirlines/248/1/111

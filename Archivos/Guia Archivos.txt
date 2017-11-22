@@ -1,0 +1,11 @@
+Aerolinea (aerolineas.txt)
+id/nombre/cuentaBancaria
+
+Itinerario (aerolinea_I.txt)
+id/idVueloPlaneado/fecha/precioAdulto/precioNino
+
+Vuelo Planeado (aerolinea_T.txt)
+id/origen/destino/dia/horaInicio/horaFin/escala
+
+Aviones (aerolinea_V.txt)
+id/disponibilidad/nombre/fabricante/capacidad/tipo/idVueloPlaneado
