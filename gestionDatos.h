@@ -34,7 +34,7 @@ public:
 	estos metodos con solo una llamada ya que se creo una clase encargada
 	de realizar estas busquedas
   */
-	void buscarItinerarios();
+	void buscarItinerarios(int day);
 private:
   int agregarTrayectoria(vueloPlaneado *vpnew, int idAero);
   void cargarTrayectorias(arbinor<airline> *arbolAir);
@@ -199,9 +199,9 @@ int gestionDatos::agregarTrayectoria(vueloPlaneado *vpnew, int idAero) {
   }
 }
 /*METODOS DE BUSQUEDA*/
-void gestionDatos::buscarItinerarios(){
+void gestionDatos::buscarItinerarios(int day){
 	busDatos bs;
-	bs.busIti(aer);
+	bs.busIti(aer,day);
 }
 
 #endif

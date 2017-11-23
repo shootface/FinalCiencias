@@ -232,7 +232,8 @@ vueloEspecifico readerFile<T>::crearItinerario(vector<string> pt) {
         almacenado en el vector y lo envia al metodo split con
         el fin de organizar lo que esta dentro de esa linea
 */
-template <class T> void readerFile<T>::aviones() {
+template <class T> 
+void readerFile<T>::aviones() {
   organizarAviones(getLectura());
 }
 

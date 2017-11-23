@@ -35,6 +35,7 @@ class arbinor{
         //Recibe un " id " con el fin de buscarlo en la estructura del arbol y devolver toda la estructura
         T *buscar(int id);
         void inorden(T *p);
+        void inordenBusqueda(T *p);
         cola<tRelleno> *inordenCola();
         cola<int> *inOrdenV();
         cola<int> *inOrdenV(T *p);
@@ -98,6 +99,14 @@ void arbinor<T>::inorden(T *p){
     }
 }
 
+template <class T>
+void arbinor<T>::inordenBusqueda(T *p){
+    if (p!=NULL){
+        inordenBusqueda(p->izq);
+        cout<<p->idreal<<" "<<p->fecha<<" "<<p->id<<p->origin<<" "<<p->destino<<" "<<p->hi<<p->hf<<endl;
+        inordenBusqueda(p->der);
+    }
+}
 template <class T>
 cola<tRelleno> *arbinor<T>::inordenCola(){
 	retorna = new cola<tRelleno>;

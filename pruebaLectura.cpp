@@ -42,7 +42,10 @@ int main(){
     ges.cargarUsuarios();
     ges.cargarAerolinea();
     cout << "Ahora vamos a realizar una busque de los itinerarios" << endl;
-    ges.buscarItinerarios(); 
+    cout << "En que dia desea buscar los vuelos :" << endl;
+    int day;
+    cin >> day;
+    ges.buscarItinerarios(day); 
     //arbinor<airline> *aero = ges.getArbinorAirline();
     //arbinor<vueloPlaneado> t= aero->buscar(5662)->trayectos;
     //t.inorden(t.reRaiz());
