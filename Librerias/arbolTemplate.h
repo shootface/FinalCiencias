@@ -38,6 +38,10 @@ class arbinor{
         void inordenBusquedaPrecio(T *p);
         void inordenBusquedaHorario(T *p);
         void inordenBusquedaDuracion(T *p);
+        void inordenAerolineas(T *p);
+        void inordenUsuarios(T *p);
+        void inordenVP(T *p);
+        void inordenVPS(T *p);
         cola<tRelleno> *inordenCola();
         cola<int> *inOrdenV();
         cola<int> *inOrdenV(T *p);
@@ -102,6 +106,38 @@ void arbinor<T>::inorden(T *p){
 }
 
 template <class T>
+void arbinor<T>::inordenAerolineas(T *p){
+    if (p!=NULL){
+        inordenAerolineas(p->izq);
+        cout<<p->id<<" "<<p->name<<" "<<p->bankacc<<endl;
+        inordenAerolineas(p->der);
+    }
+}
+template <class T>
+void arbinor<T>::inordenUsuarios(T *p){
+    if (p!=NULL){
+        inordenUsuarios(p->izq);
+        cout<<p->id<<" "<<p->name<<" "<<p->lastname<<endl;
+        inordenUsuarios(p->der);
+    }
+}
+template <class T>
+void arbinor<T>::inordenVP(T *p){
+    if (p!=NULL){
+        inordenVP(p->izq);
+        cout<<p->posting<<endl;
+        inordenVP(p->der);
+    }
+}
+template <class T>
+void arbinor<T>::inordenVPS(T *p){
+    if (p!=NULL){
+        inordenVPS(p->izq);
+        cout<<p->id<<" "<<p->origin<<" "<<p->posting<<" "<<p->dayWeek<<" "<<p->hi<<" "<<p->hf<<" "<<p->numS<<endl;
+        inordenVPS(p->der);
+    }
+}
+template <class T>
 void arbinor<T>::inordenBusquedaPrecio(T *p){
     if (p!=NULL){
         inordenBusquedaPrecio(p->izq);
@@ -125,6 +161,7 @@ void arbinor<T>::inordenBusquedaDuracion(T *p){
         inordenBusquedaDuracion(p->der);
     }
 }
+
 template <class T>
 cola<tRelleno> *arbinor<T>::inordenCola(){
 	retorna = new cola<tRelleno>;
@@ -161,4 +198,4 @@ cola<int> *arbinor<T>::inOrdenV(T *p){
     }
 }
 
-#endif
+#endif#endif
