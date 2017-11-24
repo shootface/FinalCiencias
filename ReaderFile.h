@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 
 #include "Librerias/arbolTemplate.h"
@@ -275,7 +276,14 @@ lista<silla> readerFile<T>::numeracionSillas(int op) {
       for (int i = 1; i <= numFilas; i++) {
         char letra = 65; // ASCII (A,B,C,...,Z)
         for (int j = 1; j <= numColumnas; j++, letra++) {
-          aux.id = to_string(i) + letra;
+    		std::stringstream ss;
+    		ss << i;
+
+    		std::string str;
+    		ss >> str;
+
+    		//std::cout << str;
+          aux.id = str + letra;
           sillasIntercontinetal.insertar_final(aux);
         }
       }
@@ -289,7 +297,14 @@ lista<silla> readerFile<T>::numeracionSillas(int op) {
       for (int i = 1; i <= numFilas; i++) {
         char letra = 65; // ASCII (A,B,C,...,Z)
         for (int j = 1; j <= numColumnas; j++, letra++) {
-          aux.id = to_string(i) + letra;
+          	std::stringstream ss;
+    		ss << i;
+
+    		std::string str;
+    		ss >> str;
+
+    		//std::cout << str;
+          aux.id = str + letra;
           sillasRegional.insertar_final(aux);
         }
       }
