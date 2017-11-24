@@ -8,6 +8,8 @@ struct itiBus{
     int id;
     int hi;
     int hf;
+    int precioA;
+    int precioN;
     string destino;
     string origin;
     string fecha;

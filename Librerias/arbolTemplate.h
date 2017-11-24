@@ -35,7 +35,9 @@ class arbinor{
         //Recibe un " id " con el fin de buscarlo en la estructura del arbol y devolver toda la estructura
         T *buscar(int id);
         void inorden(T *p);
-        void inordenBusqueda(T *p);
+        void inordenBusquedaPrecio(T *p);
+        void inordenBusquedaHorario(T *p);
+        void inordenBusquedaDuracion(T *p);
         cola<tRelleno> *inordenCola();
         cola<int> *inOrdenV();
         cola<int> *inOrdenV(T *p);
@@ -100,11 +102,27 @@ void arbinor<T>::inorden(T *p){
 }
 
 template <class T>
-void arbinor<T>::inordenBusqueda(T *p){
+void arbinor<T>::inordenBusquedaPrecio(T *p){
     if (p!=NULL){
-        inordenBusqueda(p->izq);
-        cout<<p->idreal<<" "<<p->fecha<<" "<<p->id<<p->origin<<" "<<p->destino<<" "<<p->hi<<p->hf<<endl;
-        inordenBusqueda(p->der);
+        inordenBusquedaPrecio(p->izq);
+        cout<<p->idreal<<" "<<p->fecha<<" "<<p->id<<" "<<p->origin<<" "<<p->destino<<" "<<p->hi<<" "<<p->hf<<endl;
+        inordenBusquedaPrecio(p->der);
+    }
+}
+template <class T>
+void arbinor<T>::inordenBusquedaHorario(T *p){
+    if (p!=NULL){
+        inordenBusquedaHorario(p->izq);
+        cout<<p->idreal<<" "<<p->fecha<<" "<<p->precioA <<" "<<p->precioN <<" "<<p->origin<<" "<<p->destino<<" "<<p->id<<" "<<p->hf<<endl;
+        inordenBusquedaHorario(p->der);
+    }
+}
+template <class T>
+void arbinor<T>::inordenBusquedaDuracion(T *p){
+    if (p!=NULL){
+        inordenBusquedaDuracion(p->izq);
+        cout<<p->idreal<<" "<<p->fecha<<" "<<p->precioA <<" "<<p->precioN <<" "<<p->origin<<" "<<p->destino<<" "<<p->hi<<" "<<p->hf<<endl;
+        inordenBusquedaDuracion(p->der);
     }
 }
 template <class T>
