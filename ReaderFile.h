@@ -31,6 +31,7 @@ public:
   arbinor<T> getArbol();
   lista<T> getLista(int op);
   vector<string> getLectura() { return lecturaFinal; };
+  
   void usuarios();
   void aerolineas();
   void trayectos();

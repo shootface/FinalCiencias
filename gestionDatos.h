@@ -37,7 +37,8 @@ public:
 	estos metodos con solo una llamada ya que se creo una clase encargada
 	de realizar estas busquedas
   */
-	void buscarItinerarios(int day);
+	void buscarItinerarios(int day,user *us);
+  void buscarOrigenDestino(string origen,string destino,user *us);
 private:
   int agregarTrayectoria(vueloPlaneado *vpnew, int idAero);
   void cargarTrayectorias(arbinor<airline> *arbolAir);
@@ -211,9 +212,13 @@ int gestionDatos::agregarTrayectoria(vueloPlaneado *vpnew, int idAero) {
   }
 }
 /*METODOS DE BUSQUEDA*/
-void gestionDatos::buscarItinerarios(int day){
+void gestionDatos::buscarItinerarios(int day,user *us){
 	busDatos bs;
-	bs.busIti(aer,day);
+	bs.busIti(aer,us,day);
+}
+void gestionDatos::buscarOrigenDestino(string origen,string destino,user *us){
+  busDatos bs;
+  bs.busOD(aer,us,origen,destino);
 }
 
 /*METODOS DE ACCESO*/
@@ -229,12 +234,26 @@ int gestionDatos::login(int id){
       int opcion;
       cin >> opcion;
       if(opcion==1){
-        cout << "En que dia desea buscar los vuelos :" << endl;
-        cout << "Los datos validos seran:\n0 : lunes\n1 : martes\n2 : miercoles\n3 : jueves\n4 : viernes\n5 : sabadov\n6 : domingo\n" ;
-        int day;
-        cin >> day;
-        buscarItinerarios(day);
-        return 1;
+        cout << "Desea realizar un busqueda por: ";
+        cout << "1. Dia\n2.Origen-Destino\n";
+        cin >> opcion;
+        if(opcion==1){
+          cout << "En que dia desea buscar los vuelos :" << endl;
+          cout << "Los datos validos seran:\n0 : lunes\n1 : martes\n2 : miercoles\n3 : jueves\n4 : viernes\n5 : sabadov\n6 : domingo\n" ;
+          int day;
+          cin >> day;
+          buscarItinerarios(day,tempus);
+          return 1;
+        }else if(opcion==2){
+          cout << "Ingrese la ciudad de origen" << endl;
+          string origen;
+          cin >> origen;
+          cout << "Ingrese la ciudad de destino" << endl;
+          string destino;
+          cin >> destino;
+          buscarOrigenDestino(origen,destino,tempus);
+          return 1;
+        }
       }else if(opcion==2){
         //Metodo que muestra el historial 
       }else{
