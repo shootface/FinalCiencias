@@ -228,7 +228,11 @@ void busDatos::busIti(arbinor<airline> airtree,int day){
                     vueloPlaneado *tempp = vuelospla.buscar(temp.idVueloPlaneado);
                     if(tempp->dayWeek==day){
                         apu->idreal = temp.id;
-                        apu->id = tempp->hf-tempp->hi;
+                        int duracion = tempp->hf-tempp->hi;
+                        if(duracion<0){
+                            duracion = duracion*-1;
+                        }
+                        apu->id = duracion;
                         apu->destino = tempp->posting;
                         apu->origin = tempp->origin;
                         apu->fecha = temp.fecha;
@@ -353,7 +357,7 @@ void busDatos::busIti(arbinor<airline> airtree,int day){
                 cout << "No disponemos de vuelos para ese dia en esta aerolinea" << endl;
                 }else {
                     cout << "ID VUELO " << "FECHA " << "PRECIO "<< "ORIGEN " << "DESTINO " << "HI " << "HF " << endl;
-                    arbiparaOrganiazar.inordenBusquedaPrecio(arbiparaOrganiazar.reRaiz());
+                    arbiparaOrganiazar.inordenBusquedaHorario(arbiparaOrganiazar.reRaiz());
                 } 
             }else if(opcion==2){
                 vueloEspecifico tempvp;
@@ -385,7 +389,7 @@ void busDatos::busIti(arbinor<airline> airtree,int day){
                 cout << "No disponemos de vuelos para ese dia en esta aerolinea" << endl;
                 }else {
                     cout << "ID VUELO " << "FECHA " << "PRECIO "<< "ORIGEN " << "DESTINO " << "HI " << "HF " << endl;
-                    arbiparaOrganiazar.inordenBusquedaPrecio(arbiparaOrganiazar.reRaiz());
+                    arbiparaOrganiazar.inordenBusquedaHorario(arbiparaOrganiazar.reRaiz());
                 } 
             }else{
                 cout << "ingrese una opcion valida" << endl;
@@ -407,7 +411,11 @@ void busDatos::busIti(arbinor<airline> airtree,int day){
                         vueloPlaneado *tempp = vuelospla.buscar(tempvp.idVueloPlaneado);
                     if(tempp->dayWeek==day){
                         apu->idreal = tempvp.id;
-                        apu->id = tempp->hf-tempp->hi;
+                        int duracion = tempp->hf-tempp->hi;
+                        if(duracion<0){
+                            duracion = duracion*-1;
+                        }
+                        apu->id = duracion;
                         apu->destino = tempp->posting;
                         apu->origin = tempp->origin;
                         apu->fecha = tempvp.fecha;
@@ -421,7 +429,7 @@ void busDatos::busIti(arbinor<airline> airtree,int day){
                 cout << "No disponemos de vuelos para ese dia en esta aerolinea" << endl;
                 }else {
                     cout << "ID VUELO " << "FECHA " << "PRECIO "<< "ORIGEN " << "DESTINO " << "HI " << "HF " << endl;
-                    arbiparaOrganiazar.inordenBusquedaPrecio(arbiparaOrganiazar.reRaiz());
+                    arbiparaOrganiazar.inordenBusquedaDuracion(arbiparaOrganiazar.reRaiz());
                 } 
         }
     }else{

@@ -121,7 +121,7 @@ template <class T>
 void arbinor<T>::inordenBusquedaDuracion(T *p){
     if (p!=NULL){
         inordenBusquedaDuracion(p->izq);
-        cout<<p->idreal<<" "<<p->fecha<<" "<<p->precioA <<" "<<p->precioN <<" "<<p->origin<<" "<<p->destino<<" "<<p->hi<<" "<<p->hf<<endl;
+        cout<<p->idreal<<" "<<p->fecha<<" "<<p->precioA <<" "<<p->precioN <<" "<<p->origin<<" "<<p->destino<<" "<<p->hi<<" "<<p->hf<<" "<< p->id<<endl;
         inordenBusquedaDuracion(p->der);
     }
 }
