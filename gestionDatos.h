@@ -26,10 +26,12 @@ public:
   gestionDatos() {}
   int cargarAerolinea();
   int cargarUsuarios();
+  void cargador();
   int agregarTrayectorias(string t, int idAero);
   arbinor<user> *getArbinorUser() { return usuarios; };
   arbinor<airline> *getArbinorAirline() { return aerolineas; };
-  void login(int id);
+  int login(int id);
+  void accionar();
   /*
 	Meotdos encargados de la busqueda dentro de estas estructuras
 	estos metodos con solo una llamada ya que se creo una clase encargada
@@ -50,6 +52,15 @@ private:
 /*--------------------------------------------------------------------*/
 
 // METODOS PUBLICOS
+
+//Metodo inicializador del programa
+void gestionDatos::cargador(){
+  if(cargarUsuarios() && cargarAerolinea()){
+    accionar();
+  }else{
+    cout << "ERROR EN LA CARGA" << endl;
+  }
+}
 // Cargar usuarios del archivo de texto plano
 int gestionDatos::cargarUsuarios() {
   // llamar a la clase encargada de leer y organizar el archivo
@@ -205,6 +216,60 @@ void gestionDatos::buscarItinerarios(int day){
 	bs.busIti(aer,day);
 }
 
-/*METODOS */
+/*METODOS DE ACCESO*/
+int gestionDatos::login(int id){
+  user *tempus = us.buscar(id);
+  airline *temp = aer.buscar(id);
+  if(tempus!=NULL){
+    bool hecho=true;
+    cout << "Hola, " << tempus->name<< endl;
+    while(hecho){
+      cout << "selecione una opcion" << endl;
+      cout << "1.Realizar una compra\n2.Ver historial de compras"<< endl;
+      int opcion;
+      cin >> opcion;
+      if(opcion==1){
+        cout << "En que dia desea buscar los vuelos :" << endl;
+        cout << "Los datos validos seran:\n0 : lunes\n1 : martes\n2 : miercoles\n3 : jueves\n4 : viernes\n5 : sabadov\n6 : domingo\n" ;
+        int day;
+        cin >> day;
+        buscarItinerarios(day);
+        return 1;
+      }else if(opcion==2){
+        //Metodo que muestra el historial 
+      }else{
+        return 0;
+      }
+    }
+  }else if(temp!=NULL){
+     cout << "Hola, " << temp->name << endl;
+     bool hecho=true;
+     while(hecho){
+       cout << "1. Registrar un nuevo vueloPlaneado\n2. Registrar un nuevo vueloEspecifico" << endl;
+       int opcion;
+       cin >> opcion;
+       if(opcion==1){
+         //Metodo que crea VP
+         hecho = false;
+       }else if(opcion==2){
+         //Metodo que crea VE
+         hecho = false;
+       }else{
+         cout << "Ingrese una opcion valida " << endl;
+       } 
+     }
+
+  }else if(id==666){
+    cout << "Reportes" << endl;
+  }
+}
+
+void gestionDatos::accionar(){
+  cout << " Bienvenido " << endl;
+  cout << "Ingrese su ID : ";
+  int id;
+  cin >> id;
+  login(id);
+}
 
 #endif

@@ -349,6 +349,8 @@ void busDatos::busIti(arbinor<airline> airtree,int day){
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
                         }
                     }
@@ -381,6 +383,8 @@ void busDatos::busIti(arbinor<airline> airtree,int day){
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
                         }
                     }
