@@ -514,7 +514,8 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
                     itiBus *apu = new itiBus;
                     //cout << "ID del VE : "<< temp.id << "Precio : "<< temp.precioAdulto<< endl;
                     vueloPlaneado *tempp = vuelospla.buscar(tempvp.idVueloPlaneado);
-                    if(tempp->origin==origen && tempp->posting==destino){
+                    cout << "Cantidad de sillas disponibles para el vuelo : " << tempp->avionVuelo.sillas.tamano_lista()<< endl;
+                    if(tempp->origin==origen && tempp->posting==destino && tempp->avionVuelo.sillas.tamano_lista()>(pasAdul+pasNi)){
                         apu->idreal = tempvp.id;
                         apu->id = tempvp.precioAdulto;
                         apu->destino = tempp->posting;
@@ -550,7 +551,7 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
                     itiBus *apu = new itiBus;
                     //cout << "ID del VE : "<< temp.id << "Precio : "<< temp.precioAdulto<< endl;
                     vueloPlaneado *tempp = vuelospla.buscar(tempvp.idVueloPlaneado);
-                    if(tempp->origin==origen && tempp->posting==destino && tempvp.numeroSillasDisponibles>(pasAdul+pasNi)){
+                    if(tempp->origin==origen && tempp->posting==destino && tempp->avionVuelo.sillas.tamano_lista()>(pasAdul+pasNi)){
                         apu->idreal = tempvp.id;
                         apu->id = tempvp.precioNino;
                         apu->destino = tempp->posting;
@@ -588,7 +589,7 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
                     itiBus *apu = new itiBus;
                     //cout << "ID del VE : "<< temp.id << "Precio : "<< temp.precioAdulto<< endl;
                     vueloPlaneado *tempp = vuelospla.buscar(tempvp.idVueloPlaneado);
-                    if(tempp->origin==origen && tempp->posting==destino){
+                    if(tempp->origin==origen && tempp->posting==destino && tempp->avionVuelo.sillas.tamano_lista()>(pasAdul+pasNi)){
                         apu->idreal = tempvp.id;
                         apu->id = tempp->hi;
                         apu->destino = tempp->posting;
@@ -623,7 +624,7 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
                     itiBus *apu = new itiBus;
                     //cout << "ID del VE : "<< temp.id << "Precio : "<< temp.precioAdulto<< endl;
                     vueloPlaneado *tempp = vuelospla.buscar(tempvp.idVueloPlaneado);
-                    if(tempp->origin==origen && tempp->posting==destino){
+                    if(tempp->origin==origen && tempp->posting==destino && tempp->avionVuelo.sillas.tamano_lista()>(pasAdul+pasNi)){
                         apu->idreal = tempvp.id;
                         int duracion = tempp->hf-tempp->hi;
                         if(duracion<0){
