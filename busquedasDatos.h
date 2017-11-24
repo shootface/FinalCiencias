@@ -86,17 +86,17 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
         }
         //Organizacion de los resultados 
         cout << "Como desea organizar los resultados : \n"<< endl;
-        cout << "1. Precio \n2. Horario \n3. Duración \n" <<endl;
+        cout << "1. Precio \n2. Horario \n3. Duraciï¿½n \n" <<endl;
         cin >> opcion;
         //Organizar por precio
         if(opcion==1){
-            cout << "1. Precio adulto \n2. Precio niño\n"<< endl;
+            cout << "1. Precio adulto \n2. Precio niï¿½o\n"<< endl;
             cin >> opcion;
             //Organizar por precio adulto
             if(opcion==1){
                 vueloEspecifico temp;
                 arbinor<itiBus> arbiparaOrganiazar;
-                //cout << "tamaño de la lista :" << itinerarios.tamano_lista() << endl;
+                //cout << "tamaï¿½o de la lista :" << itinerarios.tamano_lista() << endl;
                 airline *aerolineaEncontrada = airtree.buscar(idAirline);
                 arbinor<vueloPlaneado> vuelospla = aerolineaEncontrada->trayectos;
                 for(int i=0;i<itinerarios.tamano_lista()-1;i++){
@@ -121,11 +121,11 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
                     cout << "ID VUELO " << "FECHA " << "PRECIO "<< "ORIGEN" << "DESTINO" << "HI" << "HF" << endl;
                     arbiparaOrganiazar.inordenBusquedaPrecio(arbiparaOrganiazar.reRaiz());
                 } 
-            //Organizar por precio niño
+            //Organizar por precio niï¿½o
             }else if(opcion==2){
                 vueloEspecifico temp;
                 arbinor<itiBus> arbiparaOrganiazar;
-                //cout << "tamaño de la lista :" << itinerarios.tamano_lista() << endl;
+                //cout << "tamaï¿½o de la lista :" << itinerarios.tamano_lista() << endl;
                 airline *aerolineaEncontrada = airtree.buscar(idAirline);
                 arbinor<vueloPlaneado> vuelospla = aerolineaEncontrada->trayectos;
                 for(int i=0;i<itinerarios.tamano_lista()-1;i++){
@@ -159,13 +159,13 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
             if(opcion==1){
                 vueloEspecifico temp;
                 arbinor<itiBus> arbiparaOrganiazar;
-                cout << "tamaño de la lista :" << itinerarios.tamano_lista() << endl;
+                cout << "tamaÃ±o de la lista :" << itinerarios.tamano_lista() << endl;
                 airline *aerolineaEncontrada = airtree.buscar(idAirline);
                 arbinor<vueloPlaneado> vuelospla = aerolineaEncontrada->trayectos;
                 for(int i=0;i<itinerarios.tamano_lista()-1;i++){
                     temp  = itinerarios.obtenerDato(i);
                     itiBus *apu = new itiBus;
-                    cout << "ID del VE : "<< temp.id << "Precio : "<< temp.precioAdulto<< endl;
+                    //cout << "ID del VE : "<< temp.id << "Precio : "<< temp.precioAdulto<< endl;
                     vueloPlaneado *tempp = vuelospla.buscar(temp.idVueloPlaneado);
                     if(tempp->dayWeek==day){ 
                         airline *aerolineaEncontrada = airtree.buscar(idAirline);
@@ -189,20 +189,20 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
                 if(arbiparaOrganiazar.reRaiz()==NULL){
                     cout << "No disponemos de vuelos para ese dia en esta aerolinea\n" << endl;
                 }else {
-                    cout << "ID VUELO " << "FECHA " << "PRECIO AULTO " << "PRECIO NIÑO " << "ORIGEN " << "DESTINO " << "HI" << "HF" << endl;
+                    cout << "ID VUELO " << "FECHA " << "PRECIO AULTO " << "PRECIO NIï¿½O " << "ORIGEN " << "DESTINO " << "HI" << "HF" << endl;
                     arbiparaOrganiazar.inordenBusquedaHorario(arbiparaOrganiazar.reRaiz());  
                 }             
             //Organizacion por horarios de manera descendente
             }else if(opcion==2){
                 vueloEspecifico temp;
                 arbinor<itiBus> arbiparaOrganiazar;
-                //cout << "tamaño de la lista :" << itinerarios.tamano_lista() << endl;
+                //cout << "tamaï¿½o de la lista :" << itinerarios.tamano_lista() << endl;
                 airline *aerolineaEncontrada = airtree.buscar(idAirline);
                 arbinor<vueloPlaneado> vuelospla = aerolineaEncontrada->trayectos;
                 for(int i=0;i<itinerarios.tamano_lista()-1;i++){
                     temp  = itinerarios.obtenerDato(i);
                     itiBus *apu = new itiBus;
-                    cout << "ID del VE : "<< temp.id << "Precio : "<< temp.precioAdulto<< endl;
+                    //cout << "ID del VE : "<< temp.id << "Precio : "<< temp.precioAdulto<< endl;
                     vueloPlaneado *tempp = vuelospla.buscar(temp.idVueloPlaneado);
                     if(tempp->dayWeek==day){ 
                         airline *aerolineaEncontrada = airtree.buscar(idAirline);
@@ -223,7 +223,7 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
                 if(arbiparaOrganiazar.reRaiz()==NULL){
                     cout << "No disponemos de vuelos para ese dia en esta aerolinea\n" << endl;
                 }else {
-                    cout << "ID VUELO " << "FECHA " << "PRECIO AULTO " << "PRECIO NIÑO " << "ORIGEN " << "DESTINO " << "HI" << "HF" << endl;
+                    cout << "ID VUELO " << "FECHA " << "PRECIO AULTO " << "PRECIO NIï¿½O " << "ORIGEN " << "DESTINO " << "HI" << "HF" << endl;
                     arbiparaOrganiazar.inordenBusquedaHorario(arbiparaOrganiazar.reRaiz());   
                 }
             }
@@ -231,7 +231,7 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
         }else if(opcion==3){
                 vueloEspecifico temp;
                 arbinor<itiBus> arbiparaOrganiazar;
-                //cout << "tamaño de la lista :" << itinerarios.tamano_lista() << endl;
+                //cout << "tamaï¿½o de la lista :" << itinerarios.tamano_lista() << endl;
                 airline *aerolineaEncontrada = airtree.buscar(idAirline);
                 arbinor<vueloPlaneado> vuelospla = aerolineaEncontrada->trayectos;
                 for(int i=0;i<itinerarios.tamano_lista()-1;i++){
@@ -257,7 +257,7 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
                 if(arbiparaOrganiazar.reRaiz()==NULL){
                     cout << "No disponemos de vuelos para ese dia en esta aerolinea\n" << endl;
                 }else {
-                    cout << "ID VUELO " << "FECHA " << "PRECIO AULTO " << "PRECIO NIÑO " << "ORIGEN " << "DESTINO " << "HI" << "HF" << endl;
+                    cout << "ID VUELO " << "FECHA " << "PRECIO AULTO " << "PRECIO NIï¿½O " << "ORIGEN " << "DESTINO " << "HI" << "HF" << endl;
                     arbiparaOrganiazar.inordenBusquedaDuracion(arbiparaOrganiazar.reRaiz());  
                 } 
         }
@@ -270,11 +270,11 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
     }else if(opcionaerolinea==2){
         //Organizacion de los resultados 
         cout << "Como desea organizar los resultados : \n"<< endl;
-        cout << "1. Precio \n2. Horario \n3. Duración \n" <<endl;
+        cout << "1. Precio \n2. Horario \n3. Duraciï¿½n \n" <<endl;
         cin >> opcion;
         //Organizar por precio
         if(opcion==1){
-            cout << "1. Precio adulto \n2. Precio niño\n"<< endl;
+            cout << "1. Precio adulto \n2. Precio niï¿½o\n"<< endl;
             cin >> opcion;
             if(opcion==1){
                 vueloEspecifico tempvp;
@@ -298,6 +298,8 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
                         }
                     }
@@ -330,6 +332,8 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
                         }
                     }
@@ -443,6 +447,8 @@ void busDatos::busIti(arbinor<airline> airtree,user *us,int day){
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
                         }
                     }
@@ -478,7 +484,7 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
     cout << "Ingrese el numero de pasajero Adultos : \n"<< endl;
     int pasAdul=0;
     cin >> pasAdul;
-    cout << "Ingrese el numero de pasajeso Niños : \n" << endl;
+    cout << "Ingrese el numero de pasajeso Niï¿½os : \n" << endl;
     int pasNi=0;
     cin >> pasNi;
     cout << "Desea que sea ida y vuelta \n" << endl;
@@ -488,10 +494,10 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
         iv = true;
     }
     cout << "Como desea organizar los resultados : \n"<< endl;
-    cout << "1. Precio \n2. Horario \n3. Duración \n" <<endl;
+    cout << "1. Precio \n2. Horario \n3. Duraciï¿½n \n" <<endl;
     cin >> opcion;
     if(opcion==1){
-        cout << "1. Precio adulto \n2. Precio niño\n"<< endl;
+        cout << "1. Precio adulto \n2. Precio niï¿½o\n"<< endl;
         cin >> opcion;
         if(opcion==1){
             vueloEspecifico tempvp;
@@ -516,8 +522,10 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
-                        cout<<"INSERTO"<<endl;
+                        //cout<<"INSERTO"<<endl;
                     }
                 }
             }
@@ -550,6 +558,8 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
                     }
                 }
@@ -586,6 +596,8 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
                     }
                 }
@@ -623,6 +635,8 @@ void busDatos::busOD(arbinor<airline> airtree,user *us,string origen,string dest
                         apu->fecha = tempvp.fecha;
                         apu->hf = tempp->hf;
                         apu->hi = tempp->hi;
+                        apu->precioA = tempvp.precioAdulto;
+                        apu->precioN = tempvp.precioNino;
                         arbiparaOrganiazar.insertar(apu);
                     }
                 }
@@ -664,7 +678,7 @@ void busDatos::listUsers(arbinor<user> ustree){
 }
 
 void busDatos::listMul(arbinor<airline> airtree){
-	
+
 }
 
 void busDatos::listVPS(arbinor<airline> airtree){
