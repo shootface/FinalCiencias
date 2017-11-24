@@ -23,35 +23,35 @@ using namespace std;
 
 template <class T> class readerFile {
 public:
-  arbinor<T> tree;
-  lista<T> iti;
-  lista<T> avi;
-  vector<string> lecturaFinal;
-  readerFile() {}
-  int readFile(string name);
-  arbinor<T> getArbol();
-  lista<T> getLista(int op);
-  vector<string> getLectura() { return lecturaFinal; };
+  	arbinor<T> tree;
+	lista<T> iti;
+	lista<T> avi;
+	vector<string> lecturaFinal;
+	readerFile() {}
+	int readFile(string name);
+	arbinor<T> getArbol();
+	lista<T> getLista(int op);
+	vector<string> getLectura() { return lecturaFinal; };
   
-  void usuarios();
-  void aerolineas();
-  void trayectos();
-  void itinerarios();
-  void aviones();
-  void organizarUsuarios(vector<string> lec);
-  void organizarAerolineas(vector<string> lec);
-  void organizarPlanTrayectos(vector<string> lec);
-  void organizarItinerarios(vector<string> lec);
-  void organizarAviones(vector<string> lec);
-  vector<string> split(string dato);
-  user *crearUsuario(vector<string> users);
-  airline *crearAerolinea(vector<string> airlines);
-  vueloPlaneado *crearPlanTrayectos(vector<string> pt);
-  vueloEspecifico crearItinerario(vector<string> pt);
-  avion crearAvion(vector<string> pt);
-  lista<silla> sillasIntercontinetal;
-  lista<silla> sillasRegional;
-  lista<silla> numeracionSillas(int op);
+	void usuarios();
+	void aerolineas();
+	void trayectos();
+	void itinerarios();
+	void aviones();
+	void organizarUsuarios(vector<string> lec);
+	void organizarAerolineas(vector<string> lec);
+	void organizarPlanTrayectos(vector<string> lec);
+	void organizarItinerarios(vector<string> lec);
+	void organizarAviones(vector<string> lec);
+	vector<string> split(string dato);
+	user *crearUsuario(vector<string> users);
+	airline *crearAerolinea(vector<string> airlines);
+	vueloPlaneado *crearPlanTrayectos(vector<string> pt);
+	vueloEspecifico crearItinerario(vector<string> pt);
+	avion crearAvion(vector<string> pt);
+	lista<silla> sillasIntercontinetal;
+	lista<silla> sillasRegional;
+	lista<silla> numeracionSillas(int op);
 
 private:
 };
@@ -75,8 +75,8 @@ int readerFile<T>::readFile(string name) {
   // Defino un string donde voy a guardar cada linea leida
   string lectura;
   /*
-          Defino un elemento de tipo fstream que se encarga de crear el buffer
-     para la  lectura del archivo
+        Defino un elemento de tipo fstream que se encarga de crear el buffer
+     	para la  lectura del archivo
   */
   fstream fs;
 

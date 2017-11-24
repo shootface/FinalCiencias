@@ -31,6 +31,7 @@ public:
   arbinor<user> *getArbinorUser() { return usuarios; };
   arbinor<airline> *getArbinorAirline() { return aerolineas; };
   int login(int id);
+  int generaListas();
   void accionar();
   /*
 	Meotdos encargados de la busqueda dentro de estas estructuras
@@ -39,6 +40,12 @@ public:
   */
 	void buscarItinerarios(int day,user *us);
   void buscarOrigenDestino(string origen,string destino,user *us);
+  void listarAero();
+  void listarDest();
+  void listarUsers();
+  void listarMul();
+  void listarVP();
+  void listarVE();
 private:
   int agregarTrayectoria(vueloPlaneado *vpnew, int idAero);
   void cargarTrayectorias(arbinor<airline> *arbolAir);
@@ -221,25 +228,55 @@ void gestionDatos::buscarOrigenDestino(string origen,string destino,user *us){
   bs.busOD(aer,us,origen,destino);
 }
 
+void gestionDatos::listarAero(){
+	busDatos bs;
+	bs.listAero(aer);
+}
+
+void gestionDatos::listarDest(){
+	busDatos bs;
+	bs.listDest(aer);
+}
+
+void gestionDatos::listarUsers(){
+	busDatos bs;
+	bs.listUsers(us);	
+}
+
+void gestionDatos::listarMul(){
+	busDatos bs;
+	bs.listMul(aer);
+}
+
+void gestionDatos::listarVP(){
+	busDatos bs;
+	bs.listVPS(aer);
+}
+
+void gestionDatos::listarVE(){
+	busDatos bs;
+	bs.listVES(aer);
+}
+
 /*METODOS DE ACCESO*/
 int gestionDatos::login(int id){
   user *tempus = us.buscar(id);
   airline *temp = aer.buscar(id);
   if(tempus!=NULL){
     bool hecho=true;
-    cout << "Hola, " << tempus->name<< endl;
+    cout << "Hola, " << tempus->name <<endl;
     while(hecho){
-      cout << "selecione una opcion" << endl;
-      cout << "1.Realizar una compra\n2.Ver historial de compras"<< endl;
+      cout << "Selecione una opcion\n" << endl;
+      cout << "1. Realizar una compra\n2. Ver historial de compras\n"<< endl;
       int opcion;
       cin >> opcion;
       if(opcion==1){
-        cout << "Desea realizar un busqueda por: ";
-        cout << "1. Dia\n2.Origen-Destino\n";
+        cout << "Desea realizar un busqueda por: \n";
+        cout << "1. Dia\n2. Origen-Destino\n";
         cin >> opcion;
         if(opcion==1){
           cout << "En que dia desea buscar los vuelos :" << endl;
-          cout << "Los datos validos seran:\n0 : lunes\n1 : martes\n2 : miercoles\n3 : jueves\n4 : viernes\n5 : sabadov\n6 : domingo\n" ;
+          cout << "Los datos validos seran:\n0 : lunes\n1 : martes\n2 : miercoles\n3 : jueves\n4 : viernes\n5 : sabado\n6 : domingo\n" ;
           int day;
           cin >> day;
           buscarItinerarios(day,tempus);
@@ -283,12 +320,51 @@ int gestionDatos::login(int id){
   }
 }
 
+int gestionDatos::generaListas(){
+	int ctr = 1;
+	while (ctr == 1){
+		int opc;
+		cout << " Elija que desea listar: " << endl;
+  		cout << "1. Aerolineas\n2. Destinos por aerolinea\n3. Usuarios registrados\n4. Viajes multiples\n5. Vuelos Planeados\n6. Vuelos Especificos" << endl;
+  		cin >> opc;
+  		if (opc == 1){
+  			listarAero();
+		} else if (opc == 2){
+			listarDest();
+		} else if (opc == 3){
+			listarUsers();
+		} else if (opc == 4){
+			listarMul();
+		} else if (opc == 5){
+			listarVP();
+		} else if (opc == 6){
+			listarVE();
+		} 
+		cout<<"¿Volver a consultar?"<<endl;
+  		cout<<"1. Si\n2. No"<<endl;
+  		cin >> ctr;
+	}
+	accionar();
+	return 1;
+}
+
 void gestionDatos::accionar(){
-  cout << " Bienvenido " << endl;
-  cout << "Ingrese su ID : ";
-  int id;
-  cin >> id;
-  login(id);
+	int opc;
+  	cout << " Bienvenido " << endl;
+  	cout << " Elija una opcion: " << endl;
+  	cout << "1. Conocer informacion general\n2. Ingresar como Usuario/Aerolinea\n3. Salir" << endl;
+  	cin >> opc;
+  	if (opc == 1){
+  		generaListas();
+  	} else if (opc == 2){
+  		cout << "Ingrese su ID : ";
+  		int id;
+  		cin >> id;
+  		login(id);
+	} else if (opc == 3){
+		exit(0);
+	}
+  
 }
 
 #endif
