@@ -432,6 +432,7 @@ void busDatos::busIti(arbinor<airline> airtree,int day){
                     arbiparaOrganiazar.inordenBusquedaDuracion(arbiparaOrganiazar.reRaiz());
                 } 
         }
+    //Si no se ingreso una opcion valida
     }else{
         cout << "ingrese una opcion valida" << endl;
     }    

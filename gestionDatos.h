@@ -29,6 +29,7 @@ public:
   int agregarTrayectorias(string t, int idAero);
   arbinor<user> *getArbinorUser() { return usuarios; };
   arbinor<airline> *getArbinorAirline() { return aerolineas; };
+  void login(int id);
   /*
 	Meotdos encargados de la busqueda dentro de estas estructuras
 	estos metodos con solo una llamada ya que se creo una clase encargada
@@ -203,5 +204,7 @@ void gestionDatos::buscarItinerarios(int day){
 	busDatos bs;
 	bs.busIti(aer,day);
 }
+
+/*METODOS */
 
 #endif
